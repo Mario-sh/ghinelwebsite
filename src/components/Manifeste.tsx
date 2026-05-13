@@ -2,16 +2,16 @@
 
 import { motion } from "framer-motion";
 
-export default function Mission() {
+export default function Manifeste() {
   return (
-    <section id="vision" className="relative py-48 px-4 bg-background overflow-hidden">
+    <section id="manifeste" className="relative section-padding bg-background overflow-hidden">
       {/* Background Text Decor */}
-      <div className="absolute top-0 right-0 text-[20vw] font-serif font-black text-white/[0.02] leading-none pointer-events-none select-none">
-        HERITAGE
+      <div className="absolute top-0 right-0 text-[30vw] md:text-[20vw] font-serif font-black text-white/[0.02] leading-none pointer-events-none select-none">
+        MANIFESTE
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -22,24 +22,34 @@ export default function Mission() {
             <motion.div 
               initial={{ width: 0 }}
               whileInView={{ width: "80px" }}
-              className="h-1 bg-primary mb-12"
+              className="h-1 bg-primary mb-8 md:mb-12"
             />
             
-            <h2 className="text-sm uppercase tracking-[0.4em] text-primary mb-6 font-bold">
-              Notre Essence
+            <h2 className="text-xs md:text-sm uppercase tracking-[0.4em] text-primary mb-4 md:mb-6 font-bold">
+              Notre Vision
             </h2>
             
-            <h3 className="text-5xl md:text-7xl font-serif font-bold text-white leading-[1.1] mb-12">
-              L'histoire n'est pas <span className="italic">morte</span>, elle est en <span className="text-gradient">attente</span>.
+            <h3 className="responsive-title text-white mb-8 md:mb-12">
+              Bâtir un pont entre <span className="italic">l'histoire</span> et le <span className="text-gradient">futur</span>.
             </h3>
             
-            <div className="space-y-8 text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
               <p>
-                Au cœur du Bénin, nous forgeons des outils numériques pour redonner vie aux récits oubliés. Ghinel est une promesse : celle que la technologie ne nous éloignera pas de nos racines, mais nous y ramènera avec une force nouvelle.
+                Ghinel est né d'une conviction profonde : la technologie est l'outil ultime pour la préservation de notre héritage. Nous ne nous contentons pas de stocker des données, nous redonnons vie à l'âme de l'Afrique.
               </p>
-              <p className="text-white/80 font-medium">
-                Nous ne digitalisons pas seulement des données ; nous préservons l'âme d'une civilisation pour les millénaires à venir.
+              <p className="text-white/80 font-medium italic">
+                "Nous rêvons d'un monde où chaque africain connaît son histoire."
               </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
+                <div>
+                  <h4 className="text-white font-bold mb-2 uppercase tracking-tighter">Authenticité</h4>
+                  <p className="text-base text-muted-foreground">Préserver la vérité historique sans compromis, en respectant les traditions orales et écrites.</p>
+                </div>
+                <div>
+                  <h4 className="text-white font-bold mb-2 uppercase tracking-tighter">Innovation</h4>
+                  <p className="text-base text-muted-foreground">Utiliser l'IA, la réalité augmentée et le web immersif pour rendre la culture accessible à tous.</p>
+                </div>
+              </div>
             </div>
 
             <motion.div 

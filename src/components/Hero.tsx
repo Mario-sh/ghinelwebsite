@@ -2,7 +2,8 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
+import Link from "next/link";
+import Logo from "./ui/Logo";
 
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -15,8 +16,7 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
-  const title = "GHINEL";
-  const words = title.split("");
+  const words = ["GH", "Icon", "NEL"];
 
   return (
     <section 
@@ -51,36 +51,25 @@ export default function Hero() {
         style={{ scale, opacity, y }}
         className="relative z-10 text-center px-4"
       >
-        <div className="mb-12">
+        <div className="mb-8 md:mb-12">
           <motion.div
-            initial="hidden"
-            animate="visible"
-            className="flex justify-center overflow-hidden"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex justify-center"
           >
-            {words.map((char, i) => (
-              <motion.span
-                key={i}
-                variants={{
-                  hidden: { y: "100%", opacity: 0 },
-                  visible: { y: 0, opacity: 1 }
-                }}
-                transition={{
-                  duration: 1,
-                  delay: i * 0.1,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="heading-huge font-serif font-black text-white inline-block"
-              >
-                {char}
-              </motion.span>
-            ))}
+            <Logo 
+              width={250} 
+              height={75} 
+              className="scale-[1.5] md:scale-[2.5] origin-center mb-12 md:mb-20" 
+            />
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, letterSpacing: "0.5em" }}
-            animate={{ opacity: 1, letterSpacing: "0.2em" }}
-            transition={{ delay: 1, duration: 1.5 }}
-            className="text-sm md:text-base mt-6 font-medium text-primary uppercase tracking-[0.4em]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="text-xs md:text-base mt-4 md:mt-6 font-medium text-primary uppercase tracking-[0.3em] md:tracking-[0.4em]"
           >
             L'Éveil de l'Héritage Béninois
           </motion.div>
@@ -92,21 +81,21 @@ export default function Hero() {
           transition={{ delay: 1.2, duration: 1 }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="text-2xl md:text-4xl font-serif text-white/90 mb-8 leading-tight">
-            Fusionner l'âme de nos <span className="italic text-accent">traditions</span> avec le souffle de la <span className="italic text-primary">technologie</span>.
+          <h2 className="text-2xl md:text-5xl font-serif text-white/90 mb-6 md:mb-8 leading-tight">
+            L'intelligence au service de la <span className="italic text-accent">mémoire</span>.
           </h2>
           
-          <p className="text-lg text-muted-foreground leading-relaxed mb-12 max-w-2xl mx-auto">
-            Ghinel redéfinit l'accès à la culture africaine par des expériences immersives et une digitalisation sans précédent de notre patrimoine.
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 md:mb-12 max-w-2xl mx-auto px-4 md:px-0">
+            Nous rêvons d'un monde où chaque africain connaît son histoire. Ghinel fusionne technologie et culture pour bâtir cet avenir.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-8">
-            <button className="group relative px-10 py-5 bg-white text-black font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95">
-              <span className="relative z-10">Explorer le Musée</span>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-8 px-6 md:px-0">
+            <button className="group relative px-8 md:px-10 py-4 md:py-5 bg-white text-black font-bold text-base md:text-lg rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 w-full sm:w-auto">
+              <span className="relative z-10">Découvrir Ghinel</span>
               <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
-            <button className="glass px-10 py-5 text-white font-bold text-lg rounded-full hover:bg-white/10 transition-all border border-white/10">
-              Notre Manifeste
+            <button className="glass px-8 md:px-10 py-4 md:py-5 text-white font-bold text-base md:text-lg rounded-full hover:bg-white/10 transition-all border border-white/10 w-full sm:w-auto">
+              Voir nos solutions
             </button>
           </div>
         </motion.div>

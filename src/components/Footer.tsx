@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Globe, Camera, Briefcase, Mail, ArrowUp } from "lucide-react";
 import Link from "next/link";
+import Logo from "./ui/Logo";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -17,10 +18,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-8 group">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-background group-hover:rotate-[360deg] transition-transform duration-700">
-                G
-              </div>
-              <span className="text-3xl font-serif font-black tracking-tighter text-white">GHINEL</span>
+              <Logo 
+                width={160} 
+                height={48} 
+                className="scale-110 origin-left" 
+              />
             </Link>
             <p className="text-xl text-muted-foreground max-w-md leading-relaxed mb-8 font-medium">
               Bâtir le futur sur les fondations de notre passé. 
@@ -40,12 +42,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-6">Plateforme</h4>
-            <ul className="space-y-4 text-muted-foreground">
-              <li><Link href="#" className="hover:text-primary transition-colors">Bibliothèque</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Auteurs</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Tarifs</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Blog</Link></li>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Ghinel</h4>
+            <ul className="space-y-4 text-muted-foreground text-sm">
+              <li><Link href="#manifeste" className="hover:text-primary transition-colors">Manifeste</Link></li>
+              <li><Link href="#produits" className="hover:text-primary transition-colors">Produits</Link></li>
+              <li><Link href="#equipe" className="hover:text-primary transition-colors">Équipe</Link></li>
+              <li><Link href="#blog" className="hover:text-primary transition-colors">Blog</Link></li>
             </ul>
           </div>
 
