@@ -6,19 +6,22 @@ const team = [
     name: "Dylan",
     role: "Fondateur & CEO",
     bio: "Visionnaire passionné par l'alliance entre tech et culture.",
-    image: "/next.svg" // Placeholder, user can update later
+    initials: "D",
+    gradient: "from-primary/40 to-amber-500/20"
   },
   {
     name: "Koffi",
     role: "Directeur Technique",
     bio: "Expert en IA et systèmes immersifs.",
-    image: "/next.svg"
+    initials: "K",
+    gradient: "from-accent/40 to-orange-600/20"
   },
   {
     name: "Amina",
     role: "Curatrice Culturelle",
     bio: "Historienne spécialisée dans l'Afrique de l'Ouest.",
-    image: "/next.svg"
+    initials: "A",
+    gradient: "from-primary/30 to-accent/30"
   }
 ];
 
@@ -54,9 +57,12 @@ export default function Team() {
               className="group relative"
             >
               <div className="relative aspect-[4/5] rounded-[30px] md:rounded-[40px] overflow-hidden mb-6 md:mb-8 glass border-white/5">
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                <div className="w-full h-full bg-neutral-900 flex items-center justify-center">
-                  <span className="text-5xl md:text-6xl grayscale group-hover:grayscale-0 transition-all duration-500 opacity-20">👤</span>
+                <div className={`absolute inset-0 bg-gradient-to-br ${member.gradient} opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className="absolute inset-0 bg-neutral-900/30" />
+                <div className="relative z-10 w-full h-full flex items-center justify-center">
+                  <span className="text-8xl md:text-9xl font-serif font-bold text-white/20 group-hover:text-white/40 transition-all duration-500">
+                    {member.initials}
+                  </span>
                 </div>
               </div>
               

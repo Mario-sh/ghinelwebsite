@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display, Geist } from "next/font/google";
+import { Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import PageTransition from "@/components/ui/PageTransition";
+import Soundscape from "@/components/ui/Soundscape";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="fr" className={cn("dark", "font-sans", geist.variable)}>
       <body className={`${geist.variable} ${playfair.variable} font-sans`}>
         <CustomCursor />
+        <Soundscape />
         <SmoothScroll>
           <PageTransition>
             {children}

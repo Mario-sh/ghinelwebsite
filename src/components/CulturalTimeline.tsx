@@ -23,6 +23,18 @@ const events = [
     icon: "🦈"
   },
   {
+    year: "1960",
+    title: "Indépendance",
+    desc: "Le Dahomey accède à l'indépendance et devient une république souveraine.",
+    icon: "🇧🇯"
+  },
+  {
+    year: "1990",
+    title: "Conférence Nationale",
+    desc: "Tournant démocratique historique qui inspire tout le continent africain.",
+    icon: "🗳️"
+  },
+  {
     year: "2024",
     title: "Renaissance Numérique",
     desc: "Ghinel digitalise l'héritage pour les générations futures.",
@@ -63,7 +75,7 @@ export default function CulturalTimeline() {
             className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent origin-left z-0 hidden md:block"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 md:gap-12 relative z-10">
             {events.map((event, idx) => (
               <motion.div
                 key={idx}

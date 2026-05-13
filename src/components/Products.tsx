@@ -60,9 +60,16 @@ export default function Products() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className="group relative glass p-8 md:p-12 rounded-[30px] md:rounded-[40px] border-white/5 hover:border-primary/30 transition-all duration-500 overflow-hidden"
+              className={`group relative glass p-8 md:p-12 border-white/5 hover:border-primary/30 transition-all duration-500 overflow-hidden ${
+                idx % 2 === 0 
+                  ? 'rounded-[30px] md:rounded-[40px]' 
+                  : 'rounded-[20px] md:rounded-[28px]'
+              }`}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              {idx % 2 === 1 && (
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              )}
               
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-8 md:mb-12">

@@ -5,8 +5,23 @@ import { motion, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(() => {
+    try {
+      if (typeof window !== "undefined") {
+        return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      }
+    } catch {}
+    return false;
+  });
   const cursorX = useSpring(0, { damping: 20, stiffness: 300 });
   const cursorY = useSpring(0, { damping: 20, stiffness: 300 });
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
@@ -37,6 +52,8 @@ export default function CustomCursor() {
       window.removeEventListener("mouseover", handleHover);
     };
   }, [cursorX, cursorY]);
+
+  if (reducedMotion) return null;
 
   return (
     <motion.div

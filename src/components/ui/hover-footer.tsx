@@ -298,7 +298,7 @@ export default function HoverFooter() {
         </div>
       </div>
 
-      <div className="-mb-24 -mt-40 hidden h-[28rem] lg:flex lg:h-[30rem]">
+      <div className="-mb-24 -mt-40 hidden h-[28rem] sm:flex md:h-[30rem]">
         <TextHoverEffect text="GHINEL" className="z-50 w-full" />
       </div>
 
