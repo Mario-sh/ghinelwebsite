@@ -1,45 +1,67 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    return scrollY.on("change", (latest: number) => {
+      setIsScrolled(latest > 50);
+    });
+  }, [scrollY]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-4 transition-all duration-500">
       <motion.div 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-5xl glass-dark rounded-full px-6 py-3 flex items-center justify-between"
+        className={`w-full max-w-5xl rounded-full px-6 py-3 flex items-center justify-between transition-all duration-500 ${
+          isScrolled ? "glass-dark shadow-2xl" : "bg-transparent"
+        }`}
       >
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-background group-hover:rotate-12 transition-transform duration-300">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-background group-hover:rotate-[360deg] transition-transform duration-700">
             G
           </div>
-          <span className="text-xl font-bold tracking-tighter text-foreground">GHINEL</span>
+          <span className="text-2xl font-serif font-black tracking-tighter text-foreground group-hover:text-primary transition-colors">GHINEL</span>
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <Link href="#vision" className="hover:text-primary transition-colors">Notre Vision</Link>
-          <Link href="#technologie" className="hover:text-primary transition-colors">Technologie</Link>
-          <Link href="#impact" className="hover:text-primary transition-colors">Impact</Link>
-          <Link href="#contact" className="hover:text-primary transition-colors">Contact</Link>
+        <div className="hidden md:flex items-center gap-10 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+          <Link href="#vision" className="hover:text-primary transition-colors relative group">
+            Vision
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
+          </Link>
+          <Link href="#technologie" className="hover:text-primary transition-colors relative group">
+            Technologie
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
+          </Link>
+          <Link href="#impact" className="hover:text-primary transition-colors relative group">
+            Impact
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
+          </Link>
+          <Link href="#contact" className="hover:text-primary transition-colors relative group">
+            Contact
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
+          </Link>
         </div>
 
         <div className="flex items-center gap-4">
           <Link 
             href="#" 
-            className="hidden sm:flex items-center gap-2 bg-primary px-5 py-2 rounded-full text-sm font-bold text-background hover:scale-105 transition-transform"
+            className="hidden sm:flex items-center gap-2 bg-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest text-black hover:bg-primary hover:text-white transition-all active:scale-95"
           >
-            Découvrir <ArrowRight size={16} />
+            Découvrir <ArrowRight size={14} />
           </Link>
           <button 
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground p-2"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X /> : <Menu />}

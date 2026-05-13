@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Mission from "@/components/Mission";
 import CorePillars from "@/components/CorePillars";
+import CulturalTimeline from "@/components/CulturalTimeline";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Mission />
       <CorePillars />
+      <CulturalTimeline />
       
       {/* Immersive Divider */}
       <section className="py-20 flex justify-center">

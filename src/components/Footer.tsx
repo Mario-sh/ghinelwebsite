@@ -17,12 +17,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-8 group">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-bold text-background">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-background group-hover:rotate-[360deg] transition-transform duration-700">
                 G
               </div>
-              <span className="text-3xl font-bold tracking-tighter text-white">GHINEL</span>
+              <span className="text-3xl font-serif font-black tracking-tighter text-white">GHINEL</span>
             </Link>
-            <p className="text-xl text-muted-foreground max-w-md leading-relaxed mb-8">
+            <p className="text-xl text-muted-foreground max-w-md leading-relaxed mb-8 font-medium">
               Bâtir le futur sur les fondations de notre passé. 
               Une aventure technologique née au Bénin, pour l'Afrique.
             </p>
