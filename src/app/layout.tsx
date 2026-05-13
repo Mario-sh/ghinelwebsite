@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import PageTransition from "@/components/ui/PageTransition";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
@@ -37,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark">
-      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
+    <html lang="fr" className={cn("dark", "font-sans", geist.variable)}>
+      <body className={`${geist.variable} ${playfair.variable} font-sans`}>
         <CustomCursor />
         <SmoothScroll>
           <PageTransition>
