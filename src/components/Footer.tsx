@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Globe, Camera, Briefcase, Mail, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import Logo from "./ui/Logo";
@@ -26,7 +25,7 @@ export default function Footer() {
             </Link>
             <p className="text-xl text-muted-foreground max-w-md leading-relaxed mb-8 font-medium">
               Bâtir le futur sur les fondations de notre passé. 
-              Une aventure technologique née au Bénin, pour l'Afrique.
+              {"Une aventure technologique née au Bénin, pour l'Afrique."}
             </p>
             <div className="flex gap-6">
               <Link href="#" className="w-12 h-12 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-background transition-all">

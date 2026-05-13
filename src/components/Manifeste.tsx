@@ -30,15 +30,17 @@ export default function Manifeste() {
             </h2>
             
             <h3 className="responsive-title text-white mb-8 md:mb-12">
-              Bâtir un pont entre <span className="italic">l'histoire</span> et le <span className="text-gradient">futur</span>.
+              Bâtir un pont entre <span className="italic">{"l'histoire"}</span> et le <span className="text-gradient">futur</span>.
             </h3>
             
             <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
               <p>
-                Ghinel est né d'une conviction profonde : la technologie est l'outil ultime pour la préservation de notre héritage. Nous ne nous contentons pas de stocker des données, nous redonnons vie à l'âme de l'Afrique.
+                {
+                  "Ghinel est né d'une conviction profonde : la technologie est l'outil ultime pour la préservation de notre héritage. Nous ne nous contentons pas de stocker des données, nous redonnons vie à l'âme de l'Afrique."
+                }
               </p>
               <p className="text-white/80 font-medium italic">
-                "Nous rêvons d'un monde où chaque africain connaît son histoire."
+                {"« Nous rêvons d'un monde où chaque africain connaît son histoire. »"}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
                 <div>
@@ -47,7 +49,9 @@ export default function Manifeste() {
                 </div>
                 <div>
                   <h4 className="text-white font-bold mb-2 uppercase tracking-tighter">Innovation</h4>
-                  <p className="text-base text-muted-foreground">Utiliser l'IA, la réalité augmentée et le web immersif pour rendre la culture accessible à tous.</p>
+                  <p className="text-base text-muted-foreground">
+                    {"Utiliser l'IA, la réalité augmentée et le web immersif pour rendre la culture accessible à tous."}
+                  </p>
                 </div>
               </div>
             </div>
@@ -73,7 +77,7 @@ export default function Manifeste() {
               <div className="w-full h-full rounded-[38px] bg-neutral-900/50 flex flex-col items-center justify-center p-12 text-center relative z-10">
                 <span className="text-9xl font-serif text-primary/20 absolute top-4 left-8">“</span>
                 <p className="text-3xl md:text-4xl font-serif italic text-white leading-snug mb-10 relative">
-                  Celui qui ne sait pas d'où il vient ne peut savoir où il va.
+                  {"Celui qui ne sait pas d'où il vient ne peut savoir où il va."}
                 </p>
                 <div className="flex flex-col items-center">
                   <div className="w-16 h-16 rounded-full border border-primary/50 flex items-center justify-center mb-4">

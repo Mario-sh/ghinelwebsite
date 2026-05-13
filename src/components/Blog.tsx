@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const posts = [
   {
@@ -66,7 +65,7 @@ export default function Blog() {
                   {post.title}
                 </h3>
                 <div className="pt-4 flex items-center gap-2 text-white/40 group-hover:text-primary transition-colors font-bold text-xs md:text-sm">
-                  Lire l'article <span>→</span>
+                  {"Lire l'article "} <span>→</span>
                 </div>
               </div>
             </motion.article>

@@ -48,10 +48,11 @@ export default function CulturalTimeline() {
             whileInView={{ opacity: 1, y: 0 }}
             className="responsive-title text-white mb-6 md:mb-8"
           >
-            Le Fil de l'<span className="text-gradient">Histoire</span>
+            {"Le Fil de l'"}
+            <span className="text-gradient">Histoire</span>
           </motion.h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
-            Un voyage à travers les époques qui ont forgé l'identité du Bénin.
+            {"Un voyage à travers les époques qui ont forgé l'identité du Bénin."}
           </p>
         </div>
 

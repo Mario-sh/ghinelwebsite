@@ -48,7 +48,7 @@ export default function Products() {
             Nos <span className="text-gradient">Solutions</span>
           </motion.h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
-            Des outils technologiques conçus pour magnifier et préserver l'héritage culturel.
+            {"Des outils technologiques conçus pour magnifier et préserver l'héritage culturel."}
           </p>
         </div>
 

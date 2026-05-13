@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Link from "next/link";
 import Logo from "./ui/Logo";
 
 export default function Hero() {
@@ -15,8 +14,6 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
-
-  const words = ["GH", "Icon", "NEL"];
 
   return (
     <section 
@@ -71,7 +68,7 @@ export default function Hero() {
             transition={{ delay: 0.5, duration: 1 }}
             className="text-xs md:text-base mt-4 md:mt-6 font-medium text-primary uppercase tracking-[0.3em] md:tracking-[0.4em]"
           >
-            L'Éveil de l'Héritage Béninois
+            {"L'Éveil de l'Héritage Béninois"}
           </motion.div>
         </div>
 
@@ -82,11 +79,12 @@ export default function Hero() {
           className="max-w-3xl mx-auto"
         >
           <h2 className="text-2xl md:text-5xl font-serif text-white/90 mb-6 md:mb-8 leading-tight">
-            L'intelligence au service de la <span className="italic text-accent">mémoire</span>.
+            {"L'intelligence au service de la "}
+            <span className="italic text-accent">mémoire</span>.
           </h2>
           
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 md:mb-12 max-w-2xl mx-auto px-4 md:px-0">
-            Nous rêvons d'un monde où chaque africain connaît son histoire. Ghinel fusionne technologie et culture pour bâtir cet avenir.
+            {"Nous rêvons d'un monde où chaque africain connaît son histoire. Ghinel fusionne technologie et culture pour bâtir cet avenir."}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-8 px-6 md:px-0">

@@ -1,8 +1,17 @@
 'use client';
 
 import type React from 'react';
-import { useRef, useMemo, useCallback, useState, useEffect, Suspense, Component } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import {
+  useRef,
+  useMemo,
+  useCallback,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  Suspense,
+  Component,
+} from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 type ImageItem = string | { src: string; alt?: string };
@@ -132,47 +141,6 @@ const createClothMaterial = () => {
   });
 };
 
-// ─── Image Plane ────────────────────────────────────────────────
-function ImagePlane({
-  texture,
-  position,
-  scale,
-  material,
-}: {
-  texture: THREE.Texture;
-  position: [number, number, number];
-  scale: [number, number, number];
-  material: THREE.ShaderMaterial;
-}) {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    if (material && texture) {
-      material.uniforms.map.value = texture;
-    }
-  }, [material, texture]);
-
-  useEffect(() => {
-    if (material?.uniforms) {
-      material.uniforms.isHovered.value = isHovered ? 1.0 : 0.0;
-    }
-  }, [material, isHovered]);
-
-  return (
-    <mesh
-      ref={meshRef}
-      position={position}
-      scale={scale}
-      material={material}
-      onPointerEnter={() => setIsHovered(true)}
-      onPointerLeave={() => setIsHovered(false)}
-    >
-      <planeGeometry args={[1, 1, 32, 32]} />
-    </mesh>
-  );
-}
-
 // ─── Gallery Scene (inner R3F component) ───────────────────────
 function GalleryScene({
   images,
@@ -188,9 +156,22 @@ function GalleryScene({
     maxBlur: 3.0,
   },
 }: Omit<InfiniteGalleryProps, 'className' | 'style'>) {
-  const [scrollVelocity, setScrollVelocity] = useState(0);
+  const { gl } = useThree();
+  /** Physics + mesh transforms live in refs — no React setState in the rAF loop. */
+  const scrollVelocityRef = useRef(0);
+  const autoPlayRef = useRef(true);
   const [autoPlay, setAutoPlay] = useState(true);
-  const lastInteraction = useRef(Date.now());
+  const lastInteraction = useRef(0);
+  const meshesRef = useRef<(THREE.Mesh | null)[]>([]);
+  const hoveredSlotRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    autoPlayRef.current = autoPlay;
+  }, [autoPlay]);
+
+  useLayoutEffect(() => {
+    lastInteraction.current = Date.now();
+  }, []);
 
   const normalizedImages = useMemo(
     () => images.map((img) => (typeof img === 'string' ? { src: img, alt: '' } : img)),
@@ -285,7 +266,7 @@ function GalleryScene({
   const handleWheel = useCallback(
     (event: WheelEvent) => {
       event.preventDefault();
-      setScrollVelocity((prev) => prev + event.deltaY * 0.01 * speed);
+      scrollVelocityRef.current += event.deltaY * 0.01 * speed;
       setAutoPlay(false);
       lastInteraction.current = Date.now();
     },
@@ -295,11 +276,11 @@ function GalleryScene({
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-        setScrollVelocity((prev) => prev - 2 * speed);
+        scrollVelocityRef.current -= 2 * speed;
         setAutoPlay(false);
         lastInteraction.current = Date.now();
       } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-        setScrollVelocity((prev) => prev + 2 * speed);
+        scrollVelocityRef.current += 2 * speed;
         setAutoPlay(false);
         lastInteraction.current = Date.now();
       }
@@ -308,16 +289,14 @@ function GalleryScene({
   );
 
   useEffect(() => {
-    const canvas = document.querySelector('canvas');
-    if (canvas) {
-      canvas.addEventListener('wheel', handleWheel, { passive: false });
-      document.addEventListener('keydown', handleKeyDown);
-      return () => {
-        canvas.removeEventListener('wheel', handleWheel);
-        document.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-  }, [handleWheel, handleKeyDown]);
+    const el = gl.domElement;
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      el.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [gl, handleWheel, handleKeyDown]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -327,22 +306,23 @@ function GalleryScene({
   }, []);
 
   useFrame((state, delta) => {
-    if (autoPlay) setScrollVelocity((prev) => prev + 0.3 * delta);
-    setScrollVelocity((prev) => prev * 0.95);
+    let v = scrollVelocityRef.current;
+    if (autoPlayRef.current) v += 0.3 * delta;
+    v *= 0.95;
+    scrollVelocityRef.current = v;
 
     const time = state.clock.getElapsedTime();
     materials.forEach((mat) => {
       if (mat?.uniforms) {
         mat.uniforms.time.value = time;
-        mat.uniforms.scrollForce.value = scrollVelocity;
+        mat.uniforms.scrollForce.value = v;
       }
     });
 
     const imageAdvance = totalImages > 0 ? visibleCount % totalImages || totalImages : 0;
-    const halfRange = depthRange / 2;
 
     planesData.current.forEach((plane, i) => {
-      let newZ = plane.z + scrollVelocity * delta * 10;
+      let newZ = plane.z + v * delta * 10;
       let wrapsForward = 0;
       let wrapsBackward = 0;
 
@@ -390,31 +370,54 @@ function GalleryScene({
         mat.uniforms.blurAmount.value = blur;
       }
     });
+
+    planesData.current.forEach((plane, i) => {
+      const mesh = meshesRef.current[i];
+      const mat = materials[i];
+      if (!mesh || !mat?.uniforms) return;
+
+      const texture = textures[plane.imageIndex];
+      const worldZ = plane.z - depthRange / 2;
+      mesh.position.set(plane.x, plane.y, worldZ);
+
+      if (texture) {
+        const texImg = texture.image as { width?: number; height?: number } | undefined;
+        const aspect =
+          texImg?.width && texImg?.height ? texImg.width / texImg.height : 1;
+        if (aspect > 1) mesh.scale.set(2 * aspect, 2, 1);
+        else mesh.scale.set(2, 2 / aspect, 1);
+        if (mat.uniforms.map.value !== texture) {
+          mat.uniforms.map.value = texture;
+        }
+      }
+
+      mat.uniforms.isHovered.value = hoveredSlotRef.current === i ? 1.0 : 0.0;
+    });
   });
 
   if (normalizedImages.length === 0) return null;
 
   return (
     <>
-      {planesData.current.map((plane, i) => {
-        const texture = textures[plane.imageIndex];
-        const material = materials[i];
-        if (!texture || !material) return null;
-
-        const worldZ = plane.z - depthRange / 2;
-        const aspect = texture.image ? texture.image.width / texture.image.height : 1;
-        const scale: [number, number, number] = aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
-
-        return (
-          <ImagePlane
-            key={plane.index}
-            texture={texture}
-            position={[plane.x, plane.y, worldZ]}
-            scale={scale}
-            material={material}
-          />
-        );
-      })}
+      {Array.from({ length: visibleCount }, (_, slot) => (
+        <mesh
+          key={slot}
+          ref={(node) => {
+            meshesRef.current[slot] = node;
+          }}
+          material={materials[slot]}
+          onPointerEnter={(e) => {
+            e.stopPropagation();
+            hoveredSlotRef.current = slot;
+          }}
+          onPointerLeave={(e) => {
+            e.stopPropagation();
+            if (hoveredSlotRef.current === slot) hoveredSlotRef.current = null;
+          }}
+        >
+          <planeGeometry args={[1, 1, 32, 32]} />
+        </mesh>
+      ))}
     </>
   );
 }
@@ -457,13 +460,21 @@ export default function InfiniteGallery({
   const [webglSupported, setWebglSupported] = useState(true);
 
   useEffect(() => {
-    try {
-      const canvas = document.createElement('canvas');
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      if (!gl) setWebglSupported(false);
-    } catch {
-      setWebglSupported(false);
-    }
+    let cancelled = false;
+    const frame = requestAnimationFrame(() => {
+      if (cancelled) return;
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        setWebglSupported(!!gl);
+      } catch {
+        setWebglSupported(false);
+      }
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   const fallback = (

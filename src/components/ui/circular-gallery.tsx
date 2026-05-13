@@ -30,8 +30,10 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
   ({ items, className, radius = 600, autoRotateSpeed = 0.02, ...props }, ref) => {
     const [rotation, setRotation] = useState(0);
     const [isScrolling, setIsScrolling] = useState(false);
-    const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const animationFrameRef = useRef<number | null>(null);
+    const rotationRef = useRef(0);
+    const lastRotationEmit = useRef(0);
 
     // Effect to handle scroll-based rotation
     useEffect(() => {
@@ -44,6 +46,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
         const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollProgress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
         const scrollRotation = scrollProgress * 360;
+        rotationRef.current = scrollRotation;
         setRotation(scrollRotation);
 
         scrollTimeoutRef.current = setTimeout(() => {
@@ -60,11 +63,15 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
       };
     }, []);
 
-    // Effect for auto-rotation when not scrolling
+    // Auto-rotate without setState every rAF (that pattern can starve the main thread on long pages).
     useEffect(() => {
-      const autoRotate = () => {
+      const autoRotate = (time: number) => {
         if (!isScrolling) {
-          setRotation(prev => prev + autoRotateSpeed);
+          rotationRef.current += autoRotateSpeed;
+        }
+        if (time - lastRotationEmit.current >= 50) {
+          lastRotationEmit.current = time;
+          setRotation(rotationRef.current);
         }
         animationFrameRef.current = requestAnimationFrame(autoRotate);
       };

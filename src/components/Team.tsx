@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-
 const team = [
   {
     name: "Dylan",
@@ -36,10 +34,11 @@ export default function Team() {
               viewport={{ once: true }}
               className="responsive-title text-white mb-6 md:mb-8"
             >
-              L'<span className="text-gradient">Équipe</span>
+              {"L'"}
+              <span className="text-gradient">Équipe</span>
             </motion.h2>
             <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-              Des esprits créatifs et des ingénieurs dévoués à la renaissance culturelle de l'Afrique.
+              {"Des esprits créatifs et des ingénieurs dévoués à la renaissance culturelle de l'Afrique."}
             </p>
           </div>
         </div>
