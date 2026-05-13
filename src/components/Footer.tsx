@@ -10,31 +10,31 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="relative pt-32 pb-12 px-4 bg-background overflow-hidden">
+    <footer id="contact" className="relative overflow-hidden bg-background px-4 pb-[max(3rem,env(safe-area-inset-bottom))] pt-20 sm:px-6 sm:pt-28 md:pb-12 md:pt-32">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="mb-16 grid grid-cols-1 gap-10 sm:gap-12 md:mb-20 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-8 group">
+            <Link href="/" className="group mb-6 flex max-w-[200px] items-center gap-2 sm:mb-8">
               <Logo 
                 width={160} 
                 height={48} 
-                className="scale-110 origin-left" 
+                className="origin-left scale-105 sm:scale-110" 
               />
             </Link>
-            <p className="text-xl text-muted-foreground max-w-md leading-relaxed mb-8 font-medium">
+            <p className="mb-8 max-w-md text-base font-medium leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
               Bâtir le futur sur les fondations de notre passé. 
               {"Une aventure technologique née au Bénin, pour l'Afrique."}
             </p>
-            <div className="flex gap-6">
-              <Link href="#" className="w-12 h-12 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-background transition-all">
+            <div className="flex flex-wrap gap-4 sm:gap-6">
+              <Link href="#" className="flex h-12 min-h-12 w-12 min-w-12 items-center justify-center rounded-full border border-white/10 glass text-white transition-all hover:bg-primary hover:text-background">
                 <Globe size={20} />
               </Link>
-              <Link href="#" className="w-12 h-12 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-background transition-all">
+              <Link href="#" className="flex h-12 min-h-12 w-12 min-w-12 items-center justify-center rounded-full border border-white/10 glass text-white transition-all hover:bg-primary hover:text-background">
                 <Camera size={20} />
               </Link>
-              <Link href="#" className="w-12 h-12 rounded-full glass border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-background transition-all">
+              <Link href="#" className="flex h-12 min-h-12 w-12 min-w-12 items-center justify-center rounded-full border border-white/10 glass text-white transition-all hover:bg-primary hover:text-background">
                 <Briefcase size={20} />
               </Link>
             </div>
@@ -60,11 +60,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 gap-6">
+        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-10 text-center md:flex-row md:pt-12 md:text-left">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Ghinel Startup. Tous droits réservés.
           </p>
-          <div className="flex gap-8 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground md:justify-end md:gap-8">
             <Link href="#" className="hover:text-white transition-colors">Mentions légales</Link>
             <Link href="#" className="hover:text-white transition-colors">Confidentialité</Link>
           </div>

@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 
 export default function EquipePage() {
   return (
-    <main className="min-h-screen pt-20">
+    <main className="page-top-offset min-h-screen">
       <Navbar />
       <Team />
       <Footer />

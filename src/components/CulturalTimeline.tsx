@@ -51,7 +51,7 @@ export default function CulturalTimeline() {
             {"Le Fil de l'"}
             <span className="text-gradient">Histoire</span>
           </motion.h2>
-          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl px-2 text-base text-muted-foreground sm:text-lg md:text-xl">
             {"Un voyage à travers les époques qui ont forgé l'identité du Bénin."}
           </p>
         </div>

@@ -25,7 +25,7 @@ const posts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="relative section-padding bg-background relative overflow-hidden">
+    <section id="blog" className="relative section-padding overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 md:mb-32">
           <motion.h2 
@@ -36,7 +36,7 @@ export default function Blog() {
           >
             Le <span className="text-gradient">Blog</span>
           </motion.h2>
-          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl px-2 text-base text-muted-foreground sm:text-lg md:text-xl">
             Découvrez nos dernières avancées technologiques et nos explorations culturelles.
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function Blog() {
         </div>
 
         <div className="mt-16 md:mt-32 text-center">
-          <button className="glass px-10 py-4 md:px-12 md:py-5 rounded-full text-white font-bold hover:bg-white/10 transition-all border border-white/10 text-sm md:text-base">
+          <button type="button" className="glass min-h-12 rounded-full border border-white/10 px-8 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10 sm:px-10 sm:py-4 md:px-12 md:py-5 md:text-base">
             Voir tous les articles
           </button>
         </div>

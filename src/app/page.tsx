@@ -8,49 +8,62 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navbar />
       <Hero />
       
       {/* Manifeste Teaser */}
-      <section className="relative py-32 px-4 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <h2 className="text-sm uppercase tracking-[0.4em] text-primary mb-6 font-bold">Le Manifeste</h2>
-              <h3 className="text-4xl md:text-6xl font-serif font-bold text-white mb-8">
+      <section className="relative bg-background px-4 py-16 sm:px-6 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+            <div className="min-w-0">
+              <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-primary sm:mb-6 sm:text-sm sm:tracking-[0.4em]">
+                Le Manifeste
+              </h2>
+              <h3 className="mb-6 text-3xl font-serif font-bold leading-tight text-white sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
                 Bâtir un pont entre <span className="italic">{"l'histoire"}</span> et le <span className="text-gradient">futur</span>.
               </h3>
-              <p className="text-xl text-muted-foreground mb-12">
+              <p className="mb-8 text-base leading-relaxed text-muted-foreground sm:mb-10 sm:text-lg md:text-xl">
                 {"Ghinel est né d'une conviction profonde : la technologie est l'outil ultime pour la préservation de notre héritage."}
               </p>
-              <Link href="/manifeste" className="group flex items-center gap-4 text-white font-bold">
-                Découvrir notre vision <span className="group-hover:translate-x-2 transition-transform">→</span>
+              <Link href="/manifeste" className="group inline-flex min-h-11 items-center gap-3 text-sm font-bold text-white sm:text-base">
+                Découvrir notre vision <span className="transition-transform group-hover:translate-x-2">→</span>
               </Link>
             </div>
-            <div className="aspect-square glass rounded-[40px] flex items-center justify-center text-8xl">🏺</div>
+            <div className="glass mx-auto flex aspect-square w-full max-w-[min(100%,20rem)] items-center justify-center rounded-3xl text-6xl sm:max-w-md sm:rounded-[40px] sm:text-7xl md:text-8xl">
+              🏺
+            </div>
           </div>
         </div>
       </section>
 
       {/* Produits Teaser */}
-      <section className="py-32 px-4 bg-background/50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-sm uppercase tracking-[0.4em] text-primary mb-6 font-bold">Solutions</h2>
-          <h3 className="text-4xl md:text-6xl font-serif font-bold text-white mb-16">
+      <section className="bg-background/50 px-4 py-16 sm:px-6 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-primary sm:mb-6 sm:text-sm">Solutions</h2>
+          <h3 className="mb-10 px-2 text-3xl font-serif font-bold text-white sm:mb-14 sm:text-4xl md:text-5xl lg:text-6xl">
             {"L'intelligence au service de la mémoire"}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="glass p-12 rounded-[40px] text-left group hover:border-primary/30 transition-all">
-              <h4 className="text-3xl font-serif font-bold text-white mb-4">Ghinel Library</h4>
-              <p className="text-muted-foreground mb-8">Une bibliothèque numérique interactive regroupant des manuscrits rares.</p>
+          <div className="mb-12 grid grid-cols-1 gap-6 md:mb-16 md:grid-cols-2 md:gap-8">
+            <div className="glass group rounded-3xl p-6 text-left transition-all hover:border-primary/30 sm:p-8 md:rounded-[40px] md:p-10 lg:p-12">
+              <h4 className="mb-3 font-serif text-2xl font-bold text-white sm:mb-4 sm:text-3xl">Ghinel Library</h4>
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Une bibliothèque numérique interactive regroupant des manuscrits rares.
+              </p>
             </div>
-            <div className="glass p-12 rounded-[40px] text-left group hover:border-primary/30 transition-all">
-              <h4 className="text-3xl font-serif font-bold text-white mb-4">Heritage AR</h4>
-              <p className="text-muted-foreground mb-8">Application de réalité augmentée pour visualiser les monuments en 3D.</p>
+            <div className="glass group rounded-3xl p-6 text-left transition-all hover:border-primary/30 sm:p-8 md:rounded-[40px] md:p-10 lg:p-12">
+              <h4 className="mb-3 font-serif text-2xl font-bold text-white sm:mb-4 sm:text-3xl">Heritage AR</h4>
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Application de réalité augmentée pour visualiser les monuments en 3D.
+              </p>
             </div>
           </div>
-          <Link href="/produits" className="bg-white text-black px-12 py-5 rounded-full font-bold hover:scale-105 transition-all">Voir tous nos produits</Link>
+          <Link
+            href="/produits"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-bold text-black transition-all hover:scale-105 sm:px-12 sm:py-5 sm:text-base"
+          >
+            Voir tous nos produits
+          </Link>
         </div>
       </section>
 

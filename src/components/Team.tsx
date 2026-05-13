@@ -37,7 +37,7 @@ export default function Team() {
               {"L'"}
               <span className="text-gradient">Équipe</span>
             </motion.h2>
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
               {"Des esprits créatifs et des ingénieurs dévoués à la renaissance culturelle de l'Afrique."}
             </p>
           </div>

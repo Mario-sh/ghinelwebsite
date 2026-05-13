@@ -46,23 +46,23 @@ const heritageImages = [
 
 export default function Heritage3DGallery() {
   return (
-    <section className="relative bg-background overflow-hidden">
+    <section className="relative overflow-hidden bg-background">
       {/* The 3D Gallery - full screen experience */}
-      <div className="relative h-screen w-full">
+      <div className="relative h-[100dvh] min-h-[100svh] w-full">
         <InfiniteGallery
           images={heritageImages}
           speed={1.2}
           visibleCount={10}
-          className="h-screen w-full"
+          className="h-full min-h-[100dvh] w-full"
         />
 
         {/* Overlay text with mix-blend for contrast */}
-        <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center text-center px-4 mix-blend-exclusion text-white z-10">
+        <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center mix-blend-exclusion text-white sm:px-6">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-xs uppercase tracking-[0.4em] font-bold mb-4"
+            className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] sm:mb-4 sm:text-xs sm:tracking-[0.4em]"
           >
             Immersion Culturelle
           </motion.p>
@@ -70,18 +70,18 @@ export default function Heritage3DGallery() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="font-serif text-4xl md:text-7xl tracking-tight"
+            className="font-serif text-3xl tracking-tight sm:text-4xl md:text-6xl lg:text-7xl"
           >
             <span className="italic">Patrimoine</span> Vivant
           </motion.h2>
         </div>
 
         {/* Bottom instructions */}
-        <div className="absolute bottom-8 left-0 right-0 text-center pointer-events-none z-10">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-semibold">
+        <div className="pointer-events-none absolute bottom-4 left-0 right-0 z-10 px-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-center sm:bottom-8">
+          <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-[10px] sm:tracking-[0.3em]">
             Utilisez la molette pour naviguer
           </p>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 mt-1">
+          <p className="mt-1 text-[9px] uppercase tracking-[0.18em] text-muted-foreground/60 sm:text-[10px] sm:tracking-[0.2em]">
             Lecture automatique après 3s d&apos;inactivité
           </p>
         </div>

@@ -108,9 +108,9 @@ const heritageGalleryData: GalleryItem[] = [
 
 export default function HeritageGallery() {
   return (
-    <section className="relative bg-background" style={{ height: "400vh" }}>
+    <section className="relative bg-background h-[280vh] min-h-0 sm:h-[340vh] md:h-[400vh]">
       {/* Sticky container */}
-      <div className="w-full h-screen sticky top-0 flex flex-col items-center justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-[100dvh] min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden">
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,hsl(var(--primary)/0.08)_0%,transparent_60%)]" />
@@ -121,12 +121,12 @@ export default function HeritageGallery() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="absolute top-12 md:top-20 text-center z-10 px-4"
+          className="absolute top-8 z-10 px-3 text-center sm:top-12 md:top-20 md:px-4"
         >
-          <p className="text-xs uppercase tracking-[0.4em] text-primary font-bold mb-3">
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.35em] text-primary sm:mb-3 sm:text-xs sm:tracking-[0.4em]">
             Héritage Vivant
           </p>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-white">
+          <h2 className="text-2xl font-serif font-bold leading-tight text-white sm:text-3xl md:text-5xl">
             L&apos;Afrique en{" "}
             <span className="italic text-accent">360°</span>
           </h2>

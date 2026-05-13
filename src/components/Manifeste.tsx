@@ -15,7 +15,7 @@ export default function Manifeste() {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7"
           >
@@ -33,7 +33,7 @@ export default function Manifeste() {
               Bâtir un pont entre <span className="italic">{"l'histoire"}</span> et le <span className="text-gradient">futur</span>.
             </h3>
             
-            <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            <div className="max-w-2xl space-y-5 text-base leading-relaxed text-muted-foreground sm:space-y-6 sm:text-lg md:space-y-8 md:text-xl">
               <p>
                 {
                   "Ghinel est né d'une conviction profonde : la technologie est l'outil ultime pour la préservation de notre héritage. Nous ne nous contentons pas de stocker des données, nous redonnons vie à l'âme de l'Afrique."
