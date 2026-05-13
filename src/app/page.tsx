@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import Manifeste from "@/components/Manifeste";
 import Products from "@/components/Products";
 import CulturalTimeline from "@/components/CulturalTimeline";
+import HeritageGallery from "@/components/HeritageGallery";
+import Heritage3DGallery from "@/components/Heritage3DGallery";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
@@ -49,6 +51,10 @@ export default function Home() {
       </section>
 
       <CulturalTimeline />
+
+      <HeritageGallery />
+
+      <Heritage3DGallery />
 
       <Footer />
     </main>
