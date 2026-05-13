@@ -108,7 +108,7 @@ const heritageGalleryData: GalleryItem[] = [
 
 export default function HeritageGallery() {
   return (
-    <section className="relative bg-background h-[280vh] min-h-0 sm:h-[340vh] md:h-[400vh]">
+    <section className="relative bg-background md:h-[150vh]">
       {/* Sticky container */}
       <div className="sticky top-0 flex h-[100dvh] min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden">
         {/* Background glow */}
@@ -131,7 +131,7 @@ export default function HeritageGallery() {
             <span className="italic text-accent">360°</span>
           </h2>
           <p className="text-muted-foreground mt-3 text-sm md:text-base">
-            Faites défiler pour explorer notre patrimoine
+            Utilisez les flèches pour explorer
           </p>
         </motion.div>
 
@@ -142,14 +142,6 @@ export default function HeritageGallery() {
             radius={500}
             autoRotateSpeed={0.015}
           />
-        </div>
-
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            Défiler
-          </span>
-          <div className="w-px h-10 bg-gradient-to-b from-primary/50 to-transparent" />
         </div>
       </div>
     </section>

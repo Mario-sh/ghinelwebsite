@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "./ui/Logo";
@@ -10,6 +10,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lang, setLang] = useState<"FR" | "EN">("FR");
 
   useEffect(() => {
     return scrollY.on("change", (latest: number) => {
@@ -39,9 +40,9 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-10 text-[10px] lg:text-xs font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] text-muted-foreground">
-          <Link href="/manifeste" className="hover:text-primary transition-colors relative group">
-            Manifeste
+        <div className="hidden md:flex items-center gap-6 lg:gap-8 text-[10px] lg:text-xs font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] text-muted-foreground">
+          <Link href="/services" className="hover:text-primary transition-colors relative group">
+            Services
             <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
           </Link>
           <Link href="/produits" className="hover:text-primary transition-colors relative group">
@@ -56,23 +57,38 @@ export default function Navbar() {
             Blog
             <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
           </Link>
-          <Link href="/contact" className="hover:text-primary transition-colors relative group">
-            Contact
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
+
+          <div className="w-px h-4 bg-white/20" />
+
+          <button
+            type="button"
+            onClick={() => setLang(lang === "FR" ? "EN" : "FR")}
+            className="flex items-center gap-1 text-[10px] lg:text-xs font-bold tracking-wider text-muted-foreground hover:text-primary transition-colors"
+          >
+            <span className={lang === "FR" ? "text-primary" : ""}>FR</span>
+            <span className="text-white/30">/</span>
+            <span className={lang === "EN" ? "text-primary" : ""}>EN</span>
+          </button>
+
+          <Link
+            href="/contact"
+            className="bg-white px-5 py-2 rounded-full text-[10px] lg:text-xs font-black uppercase tracking-widest text-black hover:bg-primary hover:text-white transition-all active:scale-95"
+          >
+            Nous Contacter
           </Link>
         </div>
 
-        <div className="flex items-center gap-4">
-          <Link 
-            href="#" 
-            className="hidden sm:flex items-center gap-2 bg-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest text-black hover:bg-primary hover:text-white transition-all active:scale-95"
+        <div className="flex items-center gap-3 md:hidden">
+          <Link
+            href="/contact"
+            className="bg-white px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest text-black hover:bg-primary hover:text-white transition-all active:scale-95"
           >
-            Découvrir <ArrowRight size={14} />
+            Nous Contacter
           </Link>
           <button 
             type="button"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            className="md:hidden text-foreground min-h-11 min-w-11 inline-flex items-center justify-center rounded-full hover:bg-white/5 active:bg-white/10"
+            className="text-foreground min-h-11 min-w-11 inline-flex items-center justify-center rounded-full hover:bg-white/5 active:bg-white/10"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -96,18 +112,29 @@ export default function Navbar() {
             <X className="size-7" />
           </button>
           
-          <Link href="/manifeste" className="text-3xl sm:text-4xl font-serif font-bold text-white hover:text-primary transition-colors text-center px-2" onClick={() => setIsOpen(false)}>Manifeste</Link>
+          <Link href="/services" className="text-3xl sm:text-4xl font-serif font-bold text-white hover:text-primary transition-colors text-center px-2" onClick={() => setIsOpen(false)}>Services</Link>
           <Link href="/produits" className="text-3xl sm:text-4xl font-serif font-bold text-white hover:text-primary transition-colors text-center px-2" onClick={() => setIsOpen(false)}>Produits</Link>
           <Link href="/equipe" className="text-3xl sm:text-4xl font-serif font-bold text-white hover:text-primary transition-colors text-center px-2" onClick={() => setIsOpen(false)}>Équipe</Link>
           <Link href="/blog" className="text-3xl sm:text-4xl font-serif font-bold text-white hover:text-primary transition-colors text-center px-2" onClick={() => setIsOpen(false)}>Blog</Link>
-          <Link href="/contact" className="text-3xl sm:text-4xl font-serif font-bold text-white hover:text-primary transition-colors text-center px-2" onClick={() => setIsOpen(false)}>Contact</Link>
-          
+
+          <div className="flex items-center gap-3 mt-4">
+            <button
+              type="button"
+              onClick={() => setLang(lang === "FR" ? "EN" : "FR")}
+              className="flex items-center gap-1.5 text-sm font-bold tracking-wider text-muted-foreground"
+            >
+              <span className={lang === "FR" ? "text-primary" : ""}>FR</span>
+              <span className="text-white/30">/</span>
+              <span className={lang === "EN" ? "text-primary" : ""}>EN</span>
+            </button>
+          </div>
+
           <Link 
             href="/contact" 
-            className="mt-4 bg-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full text-black font-black uppercase tracking-widest text-xs sm:text-sm min-h-11 inline-flex items-center justify-center"
+            className="mt-2 bg-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full text-black font-black uppercase tracking-widest text-xs sm:text-sm min-h-11 inline-flex items-center justify-center"
             onClick={() => setIsOpen(false)}
           >
-            Découvrir
+            Nous Contacter
           </Link>
         </motion.div>
       )}

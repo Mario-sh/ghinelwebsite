@@ -51,8 +51,8 @@ export default function Heritage3DGallery() {
       <div className="relative h-[100dvh] min-h-[100svh] w-full">
         <InfiniteGallery
           images={heritageImages}
-          speed={1.2}
-          visibleCount={10}
+          speed={0.8}
+          visibleCount={12}
           className="h-full min-h-[100dvh] w-full"
         />
 
@@ -79,7 +79,7 @@ export default function Heritage3DGallery() {
         {/* Bottom instructions */}
         <div className="pointer-events-none absolute bottom-4 left-0 right-0 z-10 px-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-center sm:bottom-8">
           <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-[10px] sm:tracking-[0.3em]">
-            Utilisez la molette pour naviguer
+            Balayez ou utilisez la molette
           </p>
           <p className="mt-1 text-[9px] uppercase tracking-[0.18em] text-muted-foreground/60 sm:text-[10px] sm:tracking-[0.2em]">
             Lecture automatique après 3s d&apos;inactivité

@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef, HTMLAttributes } from 'react';
+import React, { useState, useEffect, useRef, HTMLAttributes, useCallback } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const cn = (...classes: (string | undefined | null | false)[]) => {
   return classes.filter(Boolean).join(' ');
@@ -60,13 +61,34 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
 
     const [rotation, setRotation] = useState(0);
     const [isScrolling, setIsScrolling] = useState(false);
+    const [isMobile, setIsMobile] = useState(() => {
+      if (typeof window !== 'undefined') return window.innerWidth < 768;
+      return false;
+    });
     const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const animationFrameRef = useRef<number | null>(null);
     const rotationRef = useRef(0);
     const lastRotationEmit = useRef(0);
+    const autoRotateEnabled = useRef(true);
+
+    useEffect(() => {
+      const mq = window.matchMedia('(max-width: 767px)');
+      const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+      mq.addEventListener('change', handler);
+      return () => mq.removeEventListener('change', handler);
+    }, []);
+
+    const navigate = useCallback((direction: 1 | -1) => {
+      autoRotateEnabled.current = false;
+      const anglePerItem = 360 / items.length;
+      rotationRef.current += direction * anglePerItem;
+      setRotation(rotationRef.current);
+      setTimeout(() => { autoRotateEnabled.current = true; }, 3000);
+    }, [items.length]);
 
     useEffect(() => {
       const handleScroll = () => {
+        if (isMobile) return;
         setIsScrolling(true);
         if (scrollTimeoutRef.current) {
           clearTimeout(scrollTimeoutRef.current);
@@ -90,11 +112,11 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
           clearTimeout(scrollTimeoutRef.current);
         }
       };
-    }, []);
+    }, [isMobile]);
 
     useEffect(() => {
       const autoRotate = (time: number) => {
-        if (!isScrolling) {
+        if (!isScrolling && autoRotateEnabled.current) {
           rotationRef.current += autoRotateSpeed;
         }
         if (time - lastRotationEmit.current >= 50) {
@@ -136,7 +158,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
             const totalRotation = rotation % 360;
             const relativeAngle = (itemAngle + totalRotation + 360) % 360;
             const normalizedAngle = Math.abs(relativeAngle > 180 ? 360 - relativeAngle : relativeAngle);
-            const opacity = Math.max(0.3, 1 - normalizedAngle / 180);
+            const opacity = Math.max(isMobile ? 0 : 0.3, 1 - normalizedAngle / (isMobile ? 120 : 180));
 
             return (
               <div
@@ -170,6 +192,49 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                   </div>
                 </div>
               </div>
+            );
+          })}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white backdrop-blur-sm transition-all hover:bg-black/70 hover:scale-110 active:scale-95 sm:p-3"
+          aria-label="Précédent"
+        >
+          <ChevronLeft className="size-5 sm:size-6" />
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate(1)}
+          className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white backdrop-blur-sm transition-all hover:bg-black/70 hover:scale-110 active:scale-95 sm:p-3"
+          aria-label="Suivant"
+        >
+          <ChevronRight className="size-5 sm:size-6" />
+        </button>
+
+        <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 flex gap-1.5">
+          {items.slice(0, Math.min(items.length, 7)).map((_, i) => {
+            const currentAngle = ((rotation % 360) + 360) % 360;
+            const itemAngle = i * anglePerItem;
+            const diff = Math.abs(((itemAngle - currentAngle + 360) % 360 + 360) % 360);
+            const isActive = diff < anglePerItem / 2 || diff > 360 - anglePerItem / 2;
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  autoRotateEnabled.current = false;
+                  rotationRef.current = i * anglePerItem;
+                  setRotation(rotationRef.current);
+                  setTimeout(() => { autoRotateEnabled.current = true; }, 3000);
+                }}
+                className={cn(
+                  'h-1.5 rounded-full transition-all duration-300',
+                  isActive ? 'w-6 bg-white' : 'w-1.5 bg-white/30 hover:bg-white/50'
+                )}
+                aria-label={`Aller à l'élément ${i + 1}`}
+              />
             );
           })}
         </div>

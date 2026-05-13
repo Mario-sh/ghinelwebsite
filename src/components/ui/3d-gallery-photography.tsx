@@ -263,10 +263,11 @@ function GalleryScene({
     }));
   }, [depthRange, spatialPositions, totalImages, visibleCount]);
 
+  const touchStartRef = useRef(0);
+
   const handleWheel = useCallback(
     (event: WheelEvent) => {
-      event.preventDefault();
-      scrollVelocityRef.current += event.deltaY * 0.01 * speed;
+      scrollVelocityRef.current += event.deltaY * 0.005 * speed;
       setAutoPlay(false);
       lastInteraction.current = Date.now();
     },
@@ -288,15 +289,36 @@ function GalleryScene({
     [speed]
   );
 
+  const handleTouchStart = useCallback((event: TouchEvent) => {
+    touchStartRef.current = event.touches[0].clientX;
+  }, []);
+
+  const handleTouchMove = useCallback(
+    (event: TouchEvent) => {
+      const dx = event.touches[0].clientX - touchStartRef.current;
+      if (Math.abs(dx) > 10) {
+        scrollVelocityRef.current += dx * 0.01 * speed;
+        setAutoPlay(false);
+        lastInteraction.current = Date.now();
+        touchStartRef.current = event.touches[0].clientX;
+      }
+    },
+    [speed]
+  );
+
   useEffect(() => {
     const el = gl.domElement;
-    el.addEventListener('wheel', handleWheel, { passive: false });
+    el.addEventListener('wheel', handleWheel);
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchmove', handleTouchMove, { passive: true });
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       el.removeEventListener('wheel', handleWheel);
+      el.removeEventListener('touchstart', handleTouchStart);
+      el.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [gl, handleWheel, handleKeyDown]);
+  }, [gl, handleWheel, handleKeyDown, handleTouchStart, handleTouchMove]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -448,13 +470,13 @@ export default function InfiniteGallery({
   className = 'h-96 w-full',
   style,
   fadeSettings = {
-    fadeIn: { start: 0.05, end: 0.25 },
-    fadeOut: { start: 0.4, end: 0.43 },
+    fadeIn: { start: 0.0, end: 0.2 },
+    fadeOut: { start: 0.65, end: 0.85 },
   },
   blurSettings = {
-    blurIn: { start: 0.0, end: 0.1 },
-    blurOut: { start: 0.4, end: 0.43 },
-    maxBlur: 8.0,
+    blurIn: { start: 0.0, end: 0.05 },
+    blurOut: { start: 0.8, end: 0.95 },
+    maxBlur: 4.0,
   },
 }: InfiniteGalleryProps) {
   const [webglSupported, setWebglSupported] = useState(true);

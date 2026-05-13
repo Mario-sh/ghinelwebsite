@@ -69,7 +69,7 @@ export default function Hero() {
         style={{ opacity, y: textY }}
         className="relative z-10 w-full max-w-6xl px-4 sm:px-6 md:px-8 pt-[max(4rem,env(safe-area-inset-top))]"
       >
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-5xl text-center">
           {/* Brand tag */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -78,7 +78,7 @@ export default function Hero() {
             className="mb-6 sm:mb-8 flex items-center justify-center gap-3 text-[10px] font-bold uppercase tracking-[0.35em] text-primary/70 sm:text-xs"
           >
             <span className="hidden w-12 h-px bg-primary/30 sm:block" />
-            Ghinel — Renaissance Numérique
+            🇧🇯 Startup née au Bénin
             <span className="hidden w-12 h-px bg-primary/30 sm:block" />
           </motion.div>
 
@@ -90,15 +90,16 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="block text-[clamp(2.5rem,12vw,8rem)] tracking-[-0.04em]"
             >
-              L&apos;Afrique
+              Ghinel
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-[clamp(1.8rem,8vw,5rem)] mt-1 sm:mt-2 md:mt-4"
+              className="block text-[clamp(1.2rem,5vw,3.5rem)] mt-1 sm:mt-2 md:mt-4 font-sans font-bold"
             >
-              <span className="text-gradient">se souvient</span>
+              La technologie au service de la{" "}
+              <span className="text-gradient">culture africaine</span>
             </motion.span>
           </h1>
 
@@ -110,22 +111,28 @@ export default function Hero() {
             className="mx-auto my-6 h-px w-16 origin-center bg-gradient-to-r from-transparent via-primary/60 to-transparent sm:my-8 md:my-10 md:w-24"
           />
 
-          {/* Tagline */}
-          <motion.p
+          {/* Vision */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto max-w-xl font-serif text-base italic leading-relaxed text-muted-foreground/90 sm:text-lg md:text-xl"
+            className="mx-auto max-w-3xl"
           >
-            L&apos;intelligence au service de la mémoire.
-          </motion.p>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary/60 sm:text-sm">
+              Notre Vision
+            </p>
+            <p className="mt-3 font-serif text-lg italic leading-relaxed text-muted-foreground/90 sm:text-xl md:text-2xl">
+              &laquo;&nbsp;Nous rêvons d&apos;un monde où chaque Africain connaît
+              son histoire.&nbsp;&raquo;
+            </p>
+          </motion.div>
 
           {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 sm:mt-10 md:mt-14"
+            className="mt-10 sm:mt-12 md:mt-16"
           >
             <button
               type="button"
