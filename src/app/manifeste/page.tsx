@@ -1,13 +1,5 @@
-import Manifeste from "@/components/Manifeste";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { redirect } from "next/navigation";
 
-export default function ManifestePage() {
-  return (
-    <main className="page-top-offset min-h-screen">
-      <Navbar />
-      <Manifeste />
-      <Footer />
-    </main>
-  );
+export default function ManifesteRedirect() {
+  redirect("/about");
 }

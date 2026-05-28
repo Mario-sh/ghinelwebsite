@@ -1,13 +1,5 @@
-import Products from "@/components/Products";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { redirect } from "next/navigation";
 
-export default function ProduitsPage() {
-  return (
-    <main className="page-top-offset min-h-screen">
-      <Navbar />
-      <Products />
-      <Footer />
-    </main>
-  );
+export default function ProduitsRedirect() {
+  redirect("/culture");
 }

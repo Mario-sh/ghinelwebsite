@@ -118,8 +118,8 @@ export default function HeritageGallery() {
 
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="absolute top-8 z-10 px-3 text-center sm:top-12 md:top-20 md:px-4"
         >

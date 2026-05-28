@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect, useRef, HTMLAttributes, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const cn = (...classes: (string | undefined | null | false)[]) => {
-  return classes.filter(Boolean).join(' ');
-};
+import { cn } from '@/lib/utils';
 
 export interface GalleryItem {
   common: string;

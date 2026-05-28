@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
@@ -33,5 +34,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  return <>{children}</>;
+  return (
+    <MotionConfig reducedMotion="user">{children}</MotionConfig>
+  );
 }
