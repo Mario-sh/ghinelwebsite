@@ -7,13 +7,14 @@ export default function HomeCTA() {
         <div className="card-surface flex flex-col items-start justify-between gap-8 p-8 sm:flex-row sm:items-center sm:p-12">
           <div className="max-w-xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-              Partenariats
+              Collaboration
             </p>
             <h2 className="mt-3 font-serif text-2xl font-medium text-foreground sm:text-3xl">
-              Construisons la prochaine étape ensemble.
+              Bâtissons ensemble le futur du patrimoine africain.
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Institutions, investisseurs, créateurs — parlons de votre projet.
+              Investisseurs, institutions, porteurs de projets — construisons
+              quelque chose de durable ensemble.
             </p>
           </div>
           <Link

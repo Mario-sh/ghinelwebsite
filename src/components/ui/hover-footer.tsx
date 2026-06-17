@@ -161,19 +161,18 @@ export default function HoverFooter() {
     {
       title: "Ghinel",
       links: [
-        { label: "Manifeste", href: "/manifeste" },
-        { label: "Produits", href: "/produits" },
+        { label: "Solutions", href: "/solutions" },
+        { label: "Pourquoi GHINEL", href: "/about" },
         { label: "Équipe", href: "/equipe" },
-        { label: "Blog", href: "/blog" },
+        { label: "Journal", href: "/journal" },
       ],
     },
     {
-      title: "Liens utiles",
+      title: "Collaboration",
       links: [
         { label: "Contact", href: "/contact" },
-        { label: "Mentions légales", href: "#" },
-        { label: "Confidentialité", href: "#" },
-        { label: "Support", href: "/contact", pulse: true },
+        { label: "Solutions", href: "/solutions" },
+        { label: "Journal", href: "/journal" },
       ],
     },
   ];
@@ -199,7 +198,7 @@ export default function HoverFooter() {
     { icon: <Globe size={20} />, label: "Site web", href: "#" },
     { icon: <Share2 size={20} />, label: "Partager", href: "#" },
     { icon: <Heart size={20} />, label: "Ghinel", href: "/" },
-    { icon: <Sparkles size={20} />, label: "Culture", href: "/manifeste" },
+    { icon: <Sparkles size={20} />, label: "Pourquoi GHINEL", href: "/about" },
     { icon: <MessageCircle size={20} />, label: "Contact", href: "/contact" },
   ];
 
@@ -215,8 +214,9 @@ export default function HoverFooter() {
               <Logo width={160} height={48} className="origin-left" />
             </Link>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Bâtir le futur sur les fondations de notre passé. Startup béninoise
-              au service de la mémoire et du patrimoine africain.
+              GHINEL crée des solutions numériques innovantes pour rendre
+              l&apos;histoire, la culture et les savoirs africains accessibles
+              aux générations d&apos;aujourd&apos;hui et de demain.
             </p>
           </div>
 
@@ -284,7 +284,7 @@ export default function HoverFooter() {
           </div>
 
           <p className="text-center md:text-left">
-            © {new Date().getFullYear()} Ghinel. Tous droits réservés.
+            © {new Date().getFullYear()} GHINEL. Tous droits réservés.
           </p>
 
           <button

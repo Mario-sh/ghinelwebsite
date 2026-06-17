@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function ProduitsRedirect() {
-  redirect("/culture");
+  redirect("/solutions");
 }

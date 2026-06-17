@@ -35,21 +35,21 @@ export default function HomeExperiencePreview() {
             transition={{ duration: 0.8, ease }}
           >
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-              Expériences
+              Solutions
             </p>
             <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
-              Des interfaces qui rendent la culture tangible.
+              Des produits numériques au service de la mémoire africaine.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Galeries immersives, parcours interactifs et outils de
-              médiation — conçus pour musées, festivals et marques qui
-              souhaitent une présence digitale à la hauteur de leur ambition.
+              De l&apos;IA conversationnelle aux bibliothèques numériques —
+              KONDO et PAPYRUS rendent l&apos;histoire, la culture et les
+              savoirs africains accessibles à tous.
             </p>
             <Link
-              href="/culture"
+              href="/solutions"
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-brand"
             >
-              Explorer les expériences
+              Découvrir nos solutions
               <ArrowRight className="size-4" />
             </Link>
           </motion.div>

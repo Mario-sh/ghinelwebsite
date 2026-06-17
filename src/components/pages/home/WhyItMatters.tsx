@@ -1,11 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe2, History, Radio, Users, type LucideIcon } from "lucide-react";
-import AnimatedText from "@/components/motion/AnimatedText";
+import { Globe2, History, MessageCircle, BookOpen, type LucideIcon } from "lucide-react";
 import FadeIn from "@/components/motion/FadeIn";
 import { easeCinematic } from "@/lib/motion";
-import { cn } from "@/lib/utils";
 
 type Benefit = {
   title: string;
@@ -15,23 +13,23 @@ type Benefit = {
 
 const benefits: Benefit[] = [
   {
-    title: "Living archives",
-    desc: "Oral histories, manuscripts, and traditions — structured and preserved before they disappear from the record.",
+    title: "IA conversationnelle",
+    desc: "KONDO permet d'interagir avec les grandes figures de l'histoire africaine — posez vos questions, découvrez leurs récits.",
+    icon: MessageCircle,
+  },
+  {
+    title: "Bibliothèque numérique",
+    desc: "PAPYRUS rend les œuvres, récits et savoirs africains accessibles grâce à une expérience de lecture moderne et interactive.",
+    icon: BookOpen,
+  },
+  {
+    title: "Patrimoine préservé",
+    desc: "Des traditions ancestrales aux manuscrits rares — nous structurons et numérisons la mémoire africaine pour les générations futures.",
     icon: History,
   },
   {
-    title: "Global reach",
-    desc: "Distribution infrastructure that puts African cultural work in front of international audiences and institutions.",
-    icon: Radio,
-  },
-  {
-    title: "Creator network",
-    desc: "A growing community of artists, authors, and producers supported with tools, visibility, and fair partnerships.",
-    icon: Users,
-  },
-  {
-    title: "World-scale impact",
-    desc: "Platforms built for museums, brands, and investors who need reliability, scale, and measurable cultural outcomes.",
+    title: "Impact mondial",
+    desc: "Des solutions conçues pour le continent africain, déployées à l'échelle internationale — pour que la mémoire africaine rayonne.",
     icon: Globe2,
   },
 ];
@@ -70,7 +68,6 @@ export default function WhyItMatters() {
       className="relative overflow-hidden border-y border-white/[0.06] py-32 md:py-48"
       aria-labelledby="why-it-matters-heading"
     >
-      {/* Base + golden radial */}
       <div className="absolute inset-0 bg-bg-deep" aria-hidden />
       <div
         className="pointer-events-none absolute inset-0"
@@ -90,7 +87,6 @@ export default function WhyItMatters() {
       />
 
       <div className="container-wide relative z-10">
-        {/* Header */}
         <header className="mx-auto max-w-3xl text-center">
           <FadeIn delay={0} y={16}>
             <div
@@ -101,28 +97,26 @@ export default function WhyItMatters() {
             </div>
           </FadeIn>
 
-          <AnimatedText
-            as="h2"
-            id="why-it-matters-heading"
-            text="Beyond aesthetics. A mission of consequence."
-            className={cn(
-              "font-serif text-4xl font-medium leading-[1.08] tracking-tight text-foreground",
-              "md:text-5xl lg:text-6xl"
-            )}
-            delay={0.1}
-            stagger={0.055}
-          />
+          <FadeIn delay={0.1} y={20}>
+            <h2
+              id="why-it-matters-heading"
+              className="font-serif text-4xl font-medium leading-[1.08] tracking-tight text-foreground md:text-5xl lg:text-6xl"
+            >
+              Nous ne modifions pas l&apos;histoire.
+              <br />
+              <span className="text-gradient">Nous changeons la manière dont vous la vivez.</span>
+            </h2>
+          </FadeIn>
 
           <FadeIn delay={0.35} y={16} className="mt-6 md:mt-8">
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              GHINEL exists to make African heritage legible, accessible, and
-              economically viable in the digital age — for communities, creators,
-              and partners worldwide.
+              Des solutions numériques innovantes pour rendre l&apos;histoire,
+              la culture et les savoirs africains accessibles aux générations
+              d&apos;aujourd&apos;hui et de demain.
             </p>
           </FadeIn>
         </header>
 
-        {/* Bento grid */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}

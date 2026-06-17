@@ -8,18 +8,18 @@ import { ease } from "@/lib/motion";
 const items = [
   {
     icon: Archive,
-    title: "Préservation numérique",
-    body: "Archivage, numérisation et structuration du patrimoine culturel — manuscrits, artefacts, traditions orales.",
+    title: "IA & Patrimoine",
+    body: "Des expériences conversationnelles pour interagir avec les grandes figures de l'histoire africaine — KONDO donne vie à la mémoire.",
   },
   {
     icon: Sparkles,
-    title: "Expériences immersives",
-    body: "Galeries 3D, narration interactive et interfaces conçues pour un public international.",
+    title: "Bibliothèque numérique",
+    body: "Une expérience de lecture moderne et interactive avec PAPYRUS — pour rendre les œuvres et savoirs africains accessibles à tous.",
   },
   {
     icon: Globe,
-    title: "Distribution mondiale",
-    body: "Plateformes et APIs pour institutions, créateurs et partenaires qui souhaitent une portée globale.",
+    title: "Impact mondial",
+    body: "Des solutions conçues pour préserver, célébrer et transmettre le patrimoine africain à l'échelle internationale.",
   },
 ];
 
@@ -33,17 +33,18 @@ export default function HomeCapabilities() {
               Ce que nous faisons
             </p>
             <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
-              Trois piliers. Une vision claire.
+              Sauvegarder. Célébrer. Transmettre.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Nous accompagnons musées, créateurs et organisations avec une
-              approche produit — rigoureuse, scalable et orientée impact.
+              Des solutions numériques innovantes pour rendre l&apos;histoire,
+              la culture et les savoirs africains accessibles aux générations
+              d&apos;aujourd&apos;hui et de demain.
             </p>
             <Link
-              href="/about"
+              href="/solutions"
               className="mt-6 inline-flex text-sm font-medium text-brand hover:underline"
             >
-              En savoir plus →
+              Découvrir nos solutions →
             </Link>
           </div>
 

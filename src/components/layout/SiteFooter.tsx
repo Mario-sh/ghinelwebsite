@@ -16,9 +16,9 @@ export default function SiteFooter() {
               className="h-8 w-auto object-contain"
             />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Infrastructure culturelle et technologique pour préserver,
-              diffuser et valoriser le patrimoine africain à l&apos;échelle
-              mondiale.
+              GHINEL crée des solutions numériques innovantes pour rendre
+              l&apos;histoire, la culture et les savoirs africains accessibles
+              aux générations d&apos;aujourd&apos;hui et de demain.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export default function SiteFooter() {
 
           <div className="md:col-span-4">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Contact
+              Collaboration
             </p>
             <p className="mt-4 text-sm text-foreground/80">Cotonou, Bénin</p>
             <a
@@ -54,7 +54,7 @@ export default function SiteFooter() {
               href="/contact"
               className="mt-6 inline-flex text-sm font-medium text-brand hover:underline"
             >
-              Demander un partenariat →
+              Proposer un projet →
             </Link>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function SiteFooter() {
             © {new Date().getFullYear()} GHINEL. Tous droits réservés.
           </p>
           <p className="text-xs text-muted-foreground/70">
-            Culture · Technologie · Innovation
+            Sauvegarder · Célébrer · Transmettre
           </p>
         </div>
       </div>

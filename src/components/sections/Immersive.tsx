@@ -20,26 +20,26 @@ const slides: Slide[] = [
   {
     image:
       "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&auto=format&fit=crop&q=80",
-    label: "Archives",
-    title: "Preserve what defines us",
+    label: "IA & Mémoire",
+    title: "KONDO — Dialogue avec l'histoire",
     description:
-      "Digitize manuscripts, oral histories, and artefacts with rigor — built for institutions that cannot afford to lose memory.",
+      "Une expérience conversationnelle pour interagir avec les grandes figures de l'histoire africaine. Posez vos questions, découvrez leurs récits.",
   },
   {
     image:
       "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1920&auto=format&fit=crop&q=80",
-    label: "Immersion",
-    title: "Experiences that move people",
+    label: "Bibliothèque",
+    title: "PAPYRUS — Lire le patrimoine",
     description:
-      "Full-screen spatial narratives and 3D galleries — designed for museums, festivals, and global audiences.",
+      "Une bibliothèque numérique interactive qui rend les œuvres, récits et savoirs africains accessibles grâce à une expérience de lecture moderne.",
   },
   {
     image:
       "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&auto=format&fit=crop&q=80",
-    label: "Distribution",
-    title: "From local roots to global reach",
+    label: "Mission",
+    title: "Sauvegarder. Célébrer. Transmettre.",
     description:
-      "Platforms and partnerships that put African cultural work where it belongs — on the world stage.",
+      "Utiliser la puissance de la technologie pour conserver l'héritage culturel africain, le rendre interactif et universellement accessible.",
   },
 ];
 
