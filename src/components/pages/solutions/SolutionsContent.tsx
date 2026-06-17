@@ -10,9 +10,10 @@ import PremiumButton from "@/components/ui/PremiumButton";
 const products = [
   {
     name: "KONDO",
-    tag: "Disponible bientôt",
+    tag: "Version 1 disponible",
     tagColor: "border-brand/30 text-brand",
     icon: MessageCircle,
+    url: "https://kondo-frontend.onrender.com/",
     subtitle: "Discutez avec les grandes figures de l'histoire africaine.",
     body: "KONDO est une expérience conversationnelle permettant d'interagir avec des personnages historiques, légendaires et emblématiques du continent africain. Posez vos questions, parlez de vive voix, découvrez leurs histoires, leurs idées et les événements ayant marqué leur époque.",
   },
@@ -109,9 +110,21 @@ export default function SolutionsContent() {
                       {product.body}
                     </p>
 
-                    <PremiumButton href="/contact" variant="ghost" arrow className="mt-8">
-                      Rejoignez la liste d&apos;attente
-                    </PremiumButton>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      {product.url && (
+                        <a
+                          href={product.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-7 text-sm font-semibold text-on-brand transition-all hover:bg-brand hover:scale-105 active:scale-95"
+                        >
+                          Essayer {product.name}
+                        </a>
+                      )}
+                      <PremiumButton href="/contact" variant="ghost" arrow>
+                        Rejoignez la liste d&apos;attente
+                      </PremiumButton>
+                    </div>
                   </div>
                 </motion.article>
               );
