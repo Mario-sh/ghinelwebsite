@@ -48,8 +48,8 @@ export default function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled ? "border-b border-white/10 bg-bg" : "border-b border-transparent bg-bg/95"
+        "fixed inset-x-0 top-0 z-50 border-b border-white/10 transition-all duration-500",
+        scrolled ? "bg-bg-deep" : "bg-bg-deep/95"
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:h-[72px] sm:px-10">
