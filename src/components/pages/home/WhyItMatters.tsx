@@ -47,9 +47,9 @@ function BenefitCard({
     <FadeIn
       delay={0.12 + index * 0.08}
       y={20}
-      className="group bg-bg/80 p-8 backdrop-blur-md transition-colors duration-500 hover:bg-bg/90 sm:p-10 md:p-12"
+      className="group bg-bg p-8 backdrop-blur-md transition-colors duration-500 hover:bg-bg/90 sm:p-10 md:p-12"
     >
-      <div className="flex size-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] transition-transform duration-500 group-hover:scale-110">
+      <div className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-transform duration-500 group-hover:scale-110">
         <Icon className="size-5 text-brand" strokeWidth={1.5} aria-hidden />
       </div>
       <h3 className="mt-6 font-medium tracking-tight text-foreground sm:text-lg">
@@ -65,10 +65,10 @@ function BenefitCard({
 export default function WhyItMatters() {
   return (
     <section
-      className="relative overflow-hidden border-y border-white/[0.06] py-32 md:py-48"
+      className="relative overflow-hidden border-y border-white/10 py-32 md:py-48"
       aria-labelledby="why-it-matters-heading"
     >
-      <div className="absolute inset-0 bg-bg-deep" aria-hidden />
+      <div className="absolute inset-0 bg-bg" aria-hidden />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -77,20 +77,12 @@ export default function WhyItMatters() {
         }}
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          background:
-            "radial-gradient(ellipse 90% 50% at 50% 100%, color-mix(in srgb, var(--brand-deep) 8%, transparent), transparent 55%)",
-        }}
-        aria-hidden
-      />
 
       <div className="container-wide relative z-10">
         <header className="mx-auto max-w-3xl text-center">
           <FadeIn delay={0} y={16}>
             <div
-              className="mx-auto mb-8 flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.03]"
+              className="mx-auto mb-8 flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5"
               aria-hidden
             >
               <span className="size-2 rounded-full bg-brand shadow-[0_0_12px_color-mix(in_srgb,var(--brand)_60%,transparent)]" />
@@ -122,7 +114,7 @@ export default function WhyItMatters() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 1, delay: 0.2, ease: easeCinematic }}
-          className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-3xl bg-white/[0.08] md:mt-20 md:grid-cols-2"
+          className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-3xl bg-white/5 md:mt-20 md:grid-cols-2"
         >
           {benefits.map((item, i) => (
             <BenefitCard key={item.title} item={item} index={i} />

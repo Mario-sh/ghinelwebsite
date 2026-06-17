@@ -42,7 +42,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       onAnimationComplete={() => {
         if (exiting) onComplete();
       }}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg-deep"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg"
       aria-busy={!exiting}
       aria-label="Chargement du site"
     >

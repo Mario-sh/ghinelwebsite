@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
+import SectionLabel from "@/components/ui/SectionLabel";
+import PremiumButton from "@/components/ui/PremiumButton";
 
 export const metadata: Metadata = {
   title: "Pourquoi GHINEL",
@@ -34,13 +34,11 @@ export default function AboutPage() {
       />
 
       {/* Le constat */}
-      <section className="border-b border-white/[0.06] bg-bg-subtle">
+      <section className="border-b border-white/10 bg-section">
         <div className="container-wide section-y">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
             <div className="lg:col-span-6">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-                Le constat
-              </p>
+              <SectionLabel>Le constat</SectionLabel>
               <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
                 L&apos;Afrique possède l&apos;un des patrimoines culturels les
                 plus riches au monde.
@@ -53,7 +51,7 @@ export default function AboutPage() {
                 historiques inspirantes et des savoirs ayant traversé les
                 siècles.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Pourtant, une grande partie de cette mémoire reste difficile
                 d&apos;accès, insuffisamment documentée ou tout simplement
                 menacée de disparition.
@@ -64,33 +62,29 @@ export default function AboutPage() {
       </section>
 
       {/* Notre conviction */}
-      <section className="border-b border-white/[0.06] bg-bg">
+      <section className="bg-section-brand">
         <div className="container-wide section-y">
-          <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-br from-brand/5 via-transparent to-blue-600/5">
-            <div className="relative z-10 p-8 sm:p-12 md:p-16">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-                Notre conviction
-              </p>
-              <blockquote className="mt-6 max-w-3xl font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
-                &laquo;&nbsp;Nous croyons que la technologie est un puissant
-                outil de transmission culturelle. Non pas pour remplacer les
-                traditions, mais pour les préserver et les rendre accessibles
-                partout dans le monde.&nbsp;&raquo;
-              </blockquote>
-            </div>
+          <div className="p-0 sm:p-0 md:p-0">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-on-brand/70">
+              Notre conviction
+            </p>
+            <blockquote className="mt-6 max-w-3xl font-serif text-2xl leading-snug text-on-brand sm:text-3xl md:text-4xl">
+              &laquo;&nbsp;Nous croyons que la technologie est un puissant
+              outil de transmission culturelle. Non pas pour remplacer les
+              traditions, mais pour les préserver et les rendre accessibles
+              partout dans le monde.&nbsp;&raquo;
+            </blockquote>
           </div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="border-b border-white/[0.06] bg-bg-subtle">
+      <section className="border-b border-white/10 bg-section">
         <div className="container-wide section-y">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <div className="sticky top-28">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-                  Notre Mission
-                </p>
+                <SectionLabel>Notre Mission</SectionLabel>
                 <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
                   <span className="text-gradient">Sauvegarder.</span>
                   <br />
@@ -106,10 +100,8 @@ export default function AboutPage() {
                 l&apos;héritage culturel africain, le rendre interactif et
                 universellement accessible.
               </p>
-              <div className="mt-10 border-t border-white/[0.06] pt-10">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-                  Notre Vision
-                </p>
+              <div className="mt-10 border-t border-white/10 pt-10">
+                <SectionLabel>Notre Vision</SectionLabel>
                 <p className="mt-4 font-serif text-xl font-medium leading-snug text-foreground sm:text-2xl">
                   Devenir le leader technologique de la mémoire africaine.
                 </p>
@@ -127,7 +119,7 @@ export default function AboutPage() {
       </section>
 
       {/* Nos Cibles */}
-      <section className="bg-bg">
+      <section className="bg-section-alt">
         <div className="container-wide section-y">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
             <div className="lg:col-span-5">
@@ -141,10 +133,10 @@ export default function AboutPage() {
                 {cibles.map((cible) => (
                   <div
                     key={cible}
-                    className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-bg-elevated px-5 py-4"
+                    className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl px-5 py-4"
                   >
                     <div className="size-2 shrink-0 rounded-full bg-brand/60" />
-                    <p className="text-sm text-foreground/80">{cible}</p>
+                    <p className="text-sm text-muted-foreground">{cible}</p>
                   </div>
                 ))}
               </div>
@@ -152,12 +144,9 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-16 flex justify-center">
-            <Link
-              href="/solutions"
-              className="inline-flex min-h-12 items-center rounded-full bg-foreground px-8 text-sm font-semibold text-on-brand transition-colors hover:bg-brand"
-            >
+            <PremiumButton href="/solutions" variant="primary">
               Découvrir nos solutions
-            </Link>
+            </PremiumButton>
           </div>
         </div>
       </section>

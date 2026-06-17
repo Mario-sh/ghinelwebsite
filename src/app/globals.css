@@ -6,28 +6,24 @@
 
 :root {
   --brand: #efb034;
-  --brand-muted: #efb03499;
   --brand-deep: #c48a1a;
-  --bg: #0c1018;
-  --bg-deep: #080b12;
-  --bg-elevated: #121a28;
-  --bg-subtle: #0f141f;
-  --surface: #ffffff08;
-  --surface-raised: #ffffff0f;
-  --foreground: #f2f0eb;
-  --foreground-soft: #c8c4bc;
-  --muted: #8a909c;
-  --on-brand: #0a0c10;
-  --border-muted: #252d3d;
+  --bg: #0f172a;
+  --bg-alt: #1e293b;
+  --bg-deep: #0a0f1a;
+  --foreground: #ffffff;
+  --muted: #9ca3af;
+  --on-brand: #171a1f;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-raised: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.1);
 
   --background: var(--bg);
-  --card: var(--bg-elevated);
+  --card: var(--surface);
   --card-foreground: var(--foreground);
   --primary: var(--brand);
   --primary-foreground: var(--on-brand);
   --muted-foreground: var(--muted);
   --accent: var(--brand);
-  --border: var(--border-muted);
   --radius: 0.5rem;
 }
 
@@ -42,7 +38,7 @@
   }
 
   body {
-    background-color: var(--bg-deep);
+    background-color: var(--bg);
     color: var(--foreground);
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
@@ -62,7 +58,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -70,7 +66,7 @@ body::before {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-deep);
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
   background: color-mix(in srgb, var(--brand) 40%, transparent);
@@ -131,7 +127,22 @@ html.lenis {
   }
 
   .card-surface {
-    @apply rounded-2xl border border-white/[0.08] bg-surface;
+    @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl;
+  }
+
+  .bg-section {
+    background-color: var(--bg);
+    background-image: radial-gradient(ellipse 80% 50% at 50% 0%, color-mix(in srgb, var(--brand) 4%, transparent), transparent 70%);
+  }
+
+  .bg-section-alt {
+    background-color: var(--bg-alt);
+    border-top: 1px solid color-mix(in srgb, var(--brand) 8%, transparent);
+  }
+
+  .bg-section-brand {
+    background-color: var(--brand);
+    background-image: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.15), transparent 70%);
   }
 }
 
@@ -140,15 +151,12 @@ html.lenis {
   --font-serif: var(--font-serif), Georgia, serif;
   --color-brand: var(--brand);
   --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
   --color-bg-deep: var(--bg-deep);
-  --color-bg-elevated: var(--bg-elevated);
-  --color-bg-subtle: var(--bg-subtle);
-  --color-bg-subtle: var(--bg-subtle);
   --color-on-brand: var(--on-brand);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-foreground-soft: var(--foreground-soft);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-foreground: var(--muted);
   --color-border: var(--border);
   --color-primary: var(--primary);
   --color-card: var(--card);

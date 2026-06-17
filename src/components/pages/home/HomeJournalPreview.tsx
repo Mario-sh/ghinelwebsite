@@ -2,33 +2,27 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { journalPosts } from "@/lib/content";
 import { ease } from "@/lib/motion";
+import SectionLabel from "@/components/ui/SectionLabel";
+import PremiumButton from "@/components/ui/PremiumButton";
 
 export default function HomeJournalPreview() {
   const featured = journalPosts.slice(0, 3);
 
   return (
-    <section className="border-b border-white/[0.06] bg-bg-subtle">
+    <section className="border-b border-white/10 bg-section">
       <div className="container-wide section-y">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-              Journal
-            </p>
+            <SectionLabel>Blog</SectionLabel>
             <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
               Récits, recherches et actualités.
             </h2>
           </div>
-          <Link
-            href="/journal"
-            className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-brand"
-          >
-            Voir tout le journal
-            <ArrowRight className="size-4" />
-          </Link>
+          <PremiumButton href="/blog" variant="ghost" arrow>
+            Voir tout le blog
+          </PremiumButton>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -40,8 +34,8 @@ export default function HomeJournalPreview() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.06, ease }}
             >
-              <Link href={`/journal#${post.slug}`} className="group block">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/[0.08]">
+              <a href={`/blog#${post.slug}`} className="group block">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/10">
                   <Image
                     src={post.image}
                     alt=""
@@ -59,7 +53,7 @@ export default function HomeJournalPreview() {
                 <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
                   {post.excerpt}
                 </p>
-              </Link>
+              </a>
             </motion.article>
           ))}
         </div>

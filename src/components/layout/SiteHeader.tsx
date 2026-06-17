@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +8,19 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { mainNav } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.05 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as const } },
+};
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -32,53 +46,63 @@ export default function SiteHeader() {
   }, [pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6 lg:px-10">
-      <div
-        className={cn(
-          "mx-auto flex max-w-7xl items-center justify-between gap-6 rounded-2xl px-4 py-3 transition-all duration-300 sm:px-6",
-          scrolled
-            ? "border border-white/[0.08] bg-bg/90 shadow-lg shadow-black/10 backdrop-blur-xl"
-            : "bg-transparent"
-        )}
-      >
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        scrolled ? "border-b border-white/10 bg-bg" : "border-b border-transparent bg-bg/95"
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:h-[72px] sm:px-10">
         <Link href="/" className="relative shrink-0">
           <Image
             src="/logoghinel.png"
             alt="GHINEL"
             width={120}
             height={36}
-            className="h-7 w-auto object-contain sm:h-8"
+            className="h-9 w-auto object-contain sm:h-9 lg:h-10"
             priority
           />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
-          {mainNav.map((item) => {
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
+          {mainNav.map((navItem) => {
             const active =
-              item.href === "/"
+              navItem.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(item.href);
+                : pathname.startsWith(navItem.href);
             return (
               <Link
-                key={item.href}
-                href={item.href}
+                key={navItem.href}
+                href={navItem.href}
                 className={cn(
-                  "rounded-lg px-3.5 py-2 text-[13px] font-medium transition-colors",
+                  "text-sm tracking-wide transition-colors",
                   active
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "font-semibold text-foreground"
+                    : "font-medium text-muted-foreground hover:text-foreground"
                 )}
               >
-                {item.label}
+                {navItem.label}
               </Link>
             );
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex">
+          <Link
+            href="/connexion"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Se connecter
+          </Link>
+          <Link
+            href="/inscription"
+            className="rounded-full border border-brand px-4 py-1.5 text-sm font-medium text-brand transition-colors hover:bg-brand hover:text-on-brand"
+          >
+            S&apos;inscrire
+          </Link>
           <Link
             href="/contact"
-            className="rounded-full bg-foreground px-5 py-2.5 text-[13px] font-semibold text-on-brand transition-colors hover:bg-brand hover:text-on-brand"
+            className="rounded-full border border-white/15 px-5 py-2 text-sm font-medium text-foreground transition-colors hover:border-white/40"
           >
             Partenariats
           </Link>
@@ -87,7 +111,7 @@ export default function SiteHeader() {
         <button
           type="button"
           aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-foreground lg:hidden"
+          className="inline-flex min-h-10 min-w-10 items-center justify-center text-foreground lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -95,36 +119,63 @@ export default function SiteHeader() {
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 z-[60] bg-bg-deep/98 backdrop-blur-xl lg:hidden">
-          <div className="flex h-full flex-col px-6 pt-24 pb-10">
-            <nav className="flex flex-col gap-1" aria-label="Navigation mobile">
-              {mainNav.map((item) => {
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="border-t border-white/10 bg-bg px-6 pb-10 pt-6 lg:hidden"
+        >
+          <motion.nav
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col gap-2"
+            aria-label="Navigation mobile"
+          >
+            {mainNav.map((navItem) => {
+              const active =
+                navItem.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(navItem.href);
+              return (
+                <motion.div key={navItem.href} variants={item}>
                   <Link
-                    key={item.href}
-                    href={item.href}
+                    href={navItem.href}
                     className={cn(
-                      "rounded-xl px-4 py-4 text-2xl font-medium tracking-tight",
+                      "block rounded-lg px-3 py-3 text-[15px] font-medium tracking-wide transition-colors",
                       active ? "text-foreground" : "text-muted-foreground"
                     )}
                   >
-                    {item.label}
+                    {navItem.label}
                   </Link>
-                );
-              })}
-            </nav>
-            <Link
-              href="/contact"
-              className="mt-auto rounded-full bg-foreground py-4 text-center text-sm font-semibold text-on-brand"
-            >
-              Partenariats
-            </Link>
-          </div>
-        </div>
+                </motion.div>
+              );
+            })}
+            <motion.div variants={item} className="mt-2 flex gap-3 border-t border-white/10 pt-4">
+              <Link
+                href="/connexion"
+                className="flex-1 rounded-full border border-white/15 px-4 py-2.5 text-center text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Se connecter
+              </Link>
+              <Link
+                href="/inscription"
+                className="flex-1 rounded-full border border-brand px-4 py-2.5 text-center text-sm font-medium text-brand transition-colors hover:bg-brand hover:text-on-brand"
+              >
+                S&apos;inscrire
+              </Link>
+            </motion.div>
+            <motion.div variants={item} className="mt-3">
+              <Link
+                href="/contact"
+                className="block rounded-full border border-white/15 px-5 py-3 text-center text-sm font-medium text-foreground transition-colors hover:border-white/40"
+              >
+                Partenariats
+              </Link>
+            </motion.div>
+          </motion.nav>
+        </motion.div>
       )}
     </header>
   );

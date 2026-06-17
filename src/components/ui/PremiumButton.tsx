@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type PremiumButtonProps = {
   href?: string;
   onClick?: () => void;
   children: React.ReactNode;
-  variant?: "primary" | "ghost" | "outline";
+  variant?: "primary" | "brand" | "outline" | "ghost";
   className?: string;
+  arrow?: boolean;
 };
 
 export default function PremiumButton({
@@ -18,43 +19,39 @@ export default function PremiumButton({
   children,
   variant = "primary",
   className,
+  arrow,
 }: PremiumButtonProps) {
   const base = cn(
-    "group relative inline-flex min-h-12 items-center justify-center gap-3 overflow-hidden rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors sm:px-10 sm:py-4",
+    "group inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-7 text-sm font-semibold transition-all",
     variant === "primary" &&
-      "bg-white text-on-brand hover:bg-brand hover:text-on-brand",
-    variant === "ghost" &&
-      "text-foreground/90 hover:text-brand",
+      "bg-foreground text-on-brand hover:bg-brand hover:scale-105 active:scale-95",
+    variant === "brand" &&
+      "bg-brand text-on-brand hover:bg-brand/90 hover:scale-105 active:scale-95",
     variant === "outline" &&
-      "border border-white/15 text-foreground/90 hover:border-brand/50 hover:text-brand",
+      "border border-white/15 text-foreground hover:border-white/40 hover:bg-white/5",
+    variant === "ghost" &&
+      "text-muted-foreground hover:text-foreground",
     className
   );
 
-  const inner = (
+  const content = (
     <>
-      <span className="relative z-10">{children}</span>
-      {variant === "primary" && (
-        <motion.span
-          className="relative z-10 inline-block transition-transform duration-300 group-hover:translate-x-0.5"
-          aria-hidden
-        >
-          →
-        </motion.span>
-      )}
+      {children}
+      {arrow && <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />}
     </>
   );
 
   if (href) {
     return (
       <Link href={href} className={base}>
-        {inner}
+        {content}
       </Link>
     );
   }
 
   return (
     <button type="button" onClick={onClick} className={base}>
-      {inner}
+      {content}
     </button>
   );
 }

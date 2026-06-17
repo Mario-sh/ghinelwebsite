@@ -5,7 +5,6 @@ import HomeHero from "@/components/pages/home/HomeHero";
 import HomeProcess from "@/components/pages/home/HomeProcess";
 import HomeJournalPreview from "@/components/pages/home/HomeJournalPreview";
 import WhyItMatters from "@/components/pages/home/WhyItMatters";
-import Immersive from "@/components/sections/Immersive";
 
 export default function HomePage() {
   return (
@@ -14,7 +13,6 @@ export default function HomePage() {
       <HomeCapabilities />
       <HomeExperiencePreview />
       <WhyItMatters />
-      <Immersive />
       <HomeProcess />
       <HomeJournalPreview />
       <HomeCTA />

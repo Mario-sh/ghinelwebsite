@@ -18,7 +18,7 @@ export default function PageHero({
   return (
     <section
       className={cn(
-        "page-top-offset border-b border-white/[0.06] bg-bg",
+        "page-top-offset border-b border-white/10 bg-bg",
         className
       )}
     >

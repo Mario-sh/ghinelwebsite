@@ -3,14 +3,14 @@ export const mainNav = [
   { href: "/solutions", label: "Solutions" },
   { href: "/about", label: "Pourquoi GHINEL" },
   { href: "/contact", label: "Collaboration" },
-  { href: "/journal", label: "Journal" },
+  { href: "/blog", label: "Blog" },
 ] as const;
 
 export const footerNav = [
   { href: "/solutions", label: "Solutions" },
   { href: "/about", label: "Pourquoi GHINEL" },
   { href: "/contact", label: "Collaboration" },
-  { href: "/journal", label: "Journal" },
+  { href: "/blog", label: "Blog" },
   { href: "/equipe", label: "Équipe" },
 ] as const;
 

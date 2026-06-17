@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, Cormorant_Garamond } from "next/font/google";
 import AppShell from "@/components/layout/AppShell";
 import SmoothScroll from "@/components/ui/SmoothScroll";
-import PageTransition from "@/components/ui/PageTransition";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -55,13 +54,11 @@ export default function RootLayout({
         className={cn(
           archivo.className,
           cormorant.variable,
-          "bg-bg-deep font-sans text-foreground antialiased"
+          "bg-bg font-sans text-foreground antialiased"
         )}
       >
         <SmoothScroll>
-          <PageTransition>
-            <AppShell>{children}</AppShell>
-          </PageTransition>
+          <AppShell>{children}</AppShell>
         </SmoothScroll>
       </body>
     </html>

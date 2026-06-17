@@ -4,7 +4,7 @@ import { footerNav } from "@/lib/navigation";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-white/[0.06] bg-bg-deep">
+    <footer className="border-t border-white/10 bg-bg">
       <div className="container-wide section-y-compact">
         <div className="grid gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
@@ -31,7 +31,7 @@ export default function SiteFooter() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-foreground/80 transition-colors hover:text-brand"
+                  className="text-sm text-muted-foreground transition-colors hover:text-brand"
                 >
                   {link.label}
                 </Link>
@@ -43,10 +43,10 @@ export default function SiteFooter() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               Collaboration
             </p>
-            <p className="mt-4 text-sm text-foreground/80">Cotonou, Bénin</p>
+            <p className="mt-4 text-sm text-muted-foreground">Cotonou, Bénin</p>
             <a
               href="mailto:contact@ghinel.com"
-              className="mt-1 block text-sm text-foreground/80 transition-colors hover:text-brand"
+              className="mt-1 block text-sm text-muted-foreground transition-colors hover:text-brand"
             >
               contact@ghinel.com
             </a>
@@ -59,7 +59,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/[0.06] pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} GHINEL. Tous droits réservés.
           </p>

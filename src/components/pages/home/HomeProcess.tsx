@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ease } from "@/lib/motion";
+import SectionLabel from "@/components/ui/SectionLabel";
 
 const steps = [
   {
@@ -28,18 +29,16 @@ const steps = [
 
 export default function HomeProcess() {
   return (
-    <section className="border-b border-white/[0.06] bg-bg">
+    <section className="border-b border-white/10 bg-section-alt">
       <div className="container-wide section-y">
         <div className="max-w-2xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-            Méthode
-          </p>
+          <SectionLabel>Méthode</SectionLabel>
           <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
             Un processus structuré, de l&apos;idée au déploiement.
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.04] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
             <motion.div
               key={step.num}
@@ -47,7 +46,7 @@ export default function HomeProcess() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.06, ease }}
-              className="bg-bg p-6 sm:p-8"
+              className="bg-section-alt p-6 sm:p-8"
             >
               <span className="font-mono text-xs text-brand">{step.num}</span>
               <h3 className="mt-4 font-medium text-foreground">{step.title}</h3>

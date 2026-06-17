@@ -14,12 +14,12 @@ export default function HomeHero() {
           loop
           playsInline
           poster="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&auto=format&fit=crop&q=80"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+          className="absolute inset-0 h-full w-full object-cover opacity-60"
           onError={(e) => { e.currentTarget.style.display = "none" }}
         >
           <source src="/herovideo.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-deep/50 via-bg-deep/80 to-bg-deep" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/60 to-bg/80" />
       </div>
 
       <div className="container-wide relative z-10 px-4 text-center sm:px-6">
@@ -62,7 +62,7 @@ export default function HomeHero() {
         >
           <Link
             href="/solutions"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-7 text-sm font-semibold text-on-brand transition-all hover:bg-brand hover:scale-105 active:scale-95"
+            className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-7 text-sm font-semibold text-on-brand transition-all hover:bg-brand hover:scale-105 active:scale-95"
           >
             Découvrir GHINEL
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">

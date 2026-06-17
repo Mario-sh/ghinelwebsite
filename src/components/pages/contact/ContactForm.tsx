@@ -72,7 +72,7 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="min-h-11 w-full rounded-full bg-foreground text-sm font-semibold text-on-brand transition-colors hover:bg-brand sm:w-auto sm:px-10"
+        className="min-h-11 w-full rounded-full bg-foreground px-7 text-sm font-semibold text-on-brand transition-all hover:bg-brand hover:scale-105 active:scale-95 sm:w-auto"
       >
         Envoyer le message
       </button>

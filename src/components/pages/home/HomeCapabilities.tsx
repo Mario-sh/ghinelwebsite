@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Archive, Globe, Sparkles } from "lucide-react";
 import { ease } from "@/lib/motion";
+import SectionLabel from "@/components/ui/SectionLabel";
+import PremiumButton from "@/components/ui/PremiumButton";
 
 const items = [
   {
@@ -25,13 +26,11 @@ const items = [
 
 export default function HomeCapabilities() {
   return (
-    <section className="border-b border-white/[0.06] bg-bg">
+    <section className="border-b border-white/10 bg-section">
       <div className="container-wide section-y">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-              Ce que nous faisons
-            </p>
+            <SectionLabel>Ce que nous faisons</SectionLabel>
             <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
               Sauvegarder. Célébrer. Transmettre.
             </h2>
@@ -40,12 +39,9 @@ export default function HomeCapabilities() {
               la culture et les savoirs africains accessibles aux générations
               d&apos;aujourd&apos;hui et de demain.
             </p>
-            <Link
-              href="/solutions"
-              className="mt-6 inline-flex text-sm font-medium text-brand hover:underline"
-            >
-              Découvrir nos solutions →
-            </Link>
+            <PremiumButton href="/solutions" variant="ghost" arrow className="mt-6">
+              Découvrir nos solutions
+            </PremiumButton>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3 lg:col-span-8">
