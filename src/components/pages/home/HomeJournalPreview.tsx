@@ -11,7 +11,7 @@ export default function HomeJournalPreview() {
   const featured = journalPosts.slice(0, 3);
 
   return (
-    <section className="border-b border-white/10 bg-section">
+    <section className="hidden border-b border-white/10 bg-section lg:block">
       <div className="container-wide section-y">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>

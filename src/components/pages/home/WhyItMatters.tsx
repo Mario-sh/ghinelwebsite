@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Globe2, History, MessageCircle, BookOpen, type LucideIcon } from "lucide-react";
-import FadeIn from "@/components/motion/FadeIn";
 import { easeCinematic } from "@/lib/motion";
+import SectionLabel from "@/components/ui/SectionLabel";
 
 type Benefit = {
   title: string;
@@ -44,31 +44,27 @@ function BenefitCard({
   const Icon = item.icon;
 
   return (
-    <FadeIn
-      delay={0.12 + index * 0.08}
-      y={20}
-      className="group bg-bg p-8 backdrop-blur-md transition-colors duration-500 hover:bg-bg/90 sm:p-10 md:p-12"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, delay: index * 0.08, ease: easeCinematic }}
+      className="card-surface p-6 sm:p-7"
     >
-      <div className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-transform duration-500 group-hover:scale-110">
-        <Icon className="size-5 text-brand" strokeWidth={1.5} aria-hidden />
+      <div className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+        <Icon className="size-5 text-brand" strokeWidth={1.5} />
       </div>
-      <h3 className="mt-6 font-medium tracking-tight text-foreground sm:text-lg">
-        {item.title}
-      </h3>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+      <h3 className="mt-5 font-medium text-foreground">{item.title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         {item.desc}
       </p>
-    </FadeIn>
+    </motion.div>
   );
 }
 
 export default function WhyItMatters() {
   return (
-    <section
-      className="relative overflow-hidden border-y border-white/10 py-32 md:py-48"
-      aria-labelledby="why-it-matters-heading"
-    >
-      <div className="absolute inset-0 bg-bg" aria-hidden />
+    <section className="relative overflow-hidden border-y border-white/10">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -78,48 +74,31 @@ export default function WhyItMatters() {
         aria-hidden
       />
 
-      <div className="container-wide relative z-10">
-        <header className="mx-auto max-w-3xl text-center">
-          <FadeIn delay={0} y={16}>
-            <div
-              className="mx-auto mb-8 flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5"
-              aria-hidden
-            >
-              <span className="size-2 rounded-full bg-brand shadow-[0_0_12px_color-mix(in_srgb,var(--brand)_60%,transparent)]" />
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.1} y={20}>
+      <div className="container-wide relative z-10 section-y">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SectionLabel>Notre approche</SectionLabel>
             <h2
               id="why-it-matters-heading"
-              className="font-serif text-4xl font-medium leading-[1.08] tracking-tight text-foreground md:text-5xl lg:text-6xl"
+              className="heading-section mt-4 font-serif font-medium text-foreground"
             >
               Nous ne modifions pas l&apos;histoire.
               <br />
               <span className="text-gradient">Nous changeons la manière dont vous la vivez.</span>
             </h2>
-          </FadeIn>
-
-          <FadeIn delay={0.35} y={16} className="mt-6 md:mt-8">
-            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
               Des solutions numériques innovantes pour rendre l&apos;histoire,
               la culture et les savoirs africains accessibles aux générations
               d&apos;aujourd&apos;hui et de demain.
             </p>
-          </FadeIn>
-        </header>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 1, delay: 0.2, ease: easeCinematic }}
-          className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-3xl bg-white/5 md:mt-20 md:grid-cols-2"
-        >
-          {benefits.map((item, i) => (
-            <BenefitCard key={item.title} item={item} index={i} />
-          ))}
-        </motion.div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
+            {benefits.map((item, i) => (
+              <BenefitCard key={item.title} item={item} index={i} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
