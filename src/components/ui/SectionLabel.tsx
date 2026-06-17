@@ -10,12 +10,13 @@ export default function SectionLabel({ children, variant = "pill", className }: 
   return (
     <p
       className={cn(
+        "text-label text-brand",
         variant === "pill" &&
-          "text-[11px] font-semibold uppercase tracking-[0.22em] text-brand",
+          "text-brand",
         variant === "serif" &&
-          "font-serif text-base font-medium italic text-brand",
+          "font-serif text-base font-medium italic tracking-normal uppercase-none",
         variant === "relaxed" &&
-          "text-xs font-medium uppercase tracking-[0.15em] text-brand",
+          "tracking-[0.15em]",
         className
       )}
     >

@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Cormorant_Garamond } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import AppShell from "@/components/layout/AppShell";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import OfflineDetector from "@/components/ui/OfflineDetector";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const archivo = Archivo({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
@@ -50,11 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={cn("dark", archivo.variable)}>
+    <html lang="fr" className={cn("dark", inter.variable)}>
       <body
         className={cn(
-          archivo.className,
-          cormorant.variable,
+          inter.className,
+          playfair.variable,
           "bg-bg font-sans text-foreground antialiased"
         )}
       >

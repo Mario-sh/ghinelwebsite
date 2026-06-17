@@ -27,7 +27,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
-          className="text-xs font-semibold uppercase tracking-[0.3em] text-brand/90"
+          className="text-label text-brand/90"
         >
           GHINEL
         </motion.p>
@@ -36,7 +36,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease }}
-          className="mx-auto mt-6 max-w-6xl font-serif text-[clamp(2.5rem,9vw,5.5rem)] font-medium leading-[1.05] tracking-tight text-foreground"
+          className="mx-auto mt-6 max-w-6xl heading-display text-foreground"
         >
           Nous construisons la mémoire
           <br />
@@ -47,7 +47,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease }}
-          className="mx-auto mt-7 max-w-2xl text-[clamp(1rem,3vw,1.25rem)] leading-relaxed text-foreground/70"
+          className="mx-auto mt-7 max-w-2xl text-body-lg text-foreground/70"
         >
           GHINEL crée des solutions numériques innovantes pour rendre
           l&apos;histoire, la culture et les savoirs africains accessibles
