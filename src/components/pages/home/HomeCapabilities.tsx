@@ -10,17 +10,17 @@ const items = [
   {
     icon: Archive,
     title: "IA & Patrimoine",
-    body: "Des expériences conversationnelles pour interagir avec les grandes figures de l'histoire africaine — KONDO donne vie à la mémoire.",
+    body: "KONDO donne vie à la mémoire africaine via des expériences conversationnelles.",
   },
   {
     icon: Sparkles,
     title: "Bibliothèque numérique",
-    body: "Une expérience de lecture moderne et interactive avec PAPYRUS — pour rendre les œuvres et savoirs africains accessibles à tous.",
+    body: "PAPYRUS rend les œuvres et savoirs africains accessibles à tous.",
   },
   {
     icon: Globe,
     title: "Impact mondial",
-    body: "Des solutions conçues pour préserver, célébrer et transmettre le patrimoine africain à l'échelle internationale.",
+    body: "Des solutions pour que la mémoire africaine rayonne internationalement.",
   },
 ];
 
@@ -34,11 +34,6 @@ export default function HomeCapabilities() {
             <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
               Sauvegarder. Célébrer. Transmettre.
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Des solutions numériques innovantes pour rendre l&apos;histoire,
-              la culture et les savoirs africains accessibles aux générations
-              d&apos;aujourd&apos;hui et de demain.
-            </p>
             <PremiumButton href="/solutions" variant="ghost" arrow className="mt-6">
               Découvrir nos solutions
             </PremiumButton>

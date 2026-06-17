@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, Cormorant_Garamond } from "next/font/google";
 import AppShell from "@/components/layout/AppShell";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import OfflineDetector from "@/components/ui/OfflineDetector";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
         <SmoothScroll>
           <AppShell>{children}</AppShell>
         </SmoothScroll>
+        <OfflineDetector />
       </body>
     </html>
   );

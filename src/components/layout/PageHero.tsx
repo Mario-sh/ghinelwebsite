@@ -23,22 +23,22 @@ export default function PageHero({
       )}
     >
       <div className="container-wide section-y">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           {label && (
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand/90">
               {label}
             </p>
           )}
           <h1
             className={cn(
-              "font-serif text-4xl font-medium leading-[1.08] tracking-tight text-foreground sm:text-5xl md:text-6xl",
-              label && "mt-4"
+              "font-serif text-[clamp(2.25rem,8vw,4.5rem)] font-medium leading-[1.08] tracking-tight text-foreground",
+              label && "mt-5"
             )}
           >
             {title}
           </h1>
           {description && (
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-6 max-w-2xl text-[clamp(1rem,3vw,1.25rem)] leading-relaxed text-muted-foreground">
               {description}
             </p>
           )}

@@ -22,12 +22,12 @@ export default function HomeHero() {
         <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/60 to-bg/80" />
       </div>
 
-      <div className="container-wide relative z-10 px-4 text-center sm:px-6">
+      <div className="container-wide relative z-10 text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
-          className="text-[11px] font-semibold uppercase tracking-[0.25em] text-brand/80"
+          className="text-xs font-semibold uppercase tracking-[0.3em] text-brand/90"
         >
           GHINEL
         </motion.p>
@@ -36,7 +36,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease }}
-          className="mx-auto mt-4 max-w-5xl font-serif text-[clamp(2.2rem,8vw,5rem)] font-medium leading-[1.05] tracking-tight text-foreground"
+          className="mx-auto mt-6 max-w-6xl font-serif text-[clamp(2.5rem,9vw,5.5rem)] font-medium leading-[1.05] tracking-tight text-foreground"
         >
           Nous construisons la mémoire
           <br />
@@ -47,7 +47,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease }}
-          className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-foreground/60 sm:text-base"
+          className="mx-auto mt-7 max-w-2xl text-[clamp(1rem,3vw,1.25rem)] leading-relaxed text-foreground/70"
         >
           GHINEL crée des solutions numériques innovantes pour rendre
           l&apos;histoire, la culture et les savoirs africains accessibles
@@ -58,14 +58,14 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.32, ease }}
-          className="mt-8"
+          className="mt-10"
         >
           <Link
             href="/solutions"
-            className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-7 text-sm font-semibold text-on-brand transition-all hover:bg-brand hover:scale-105 active:scale-95"
+            className="group inline-flex min-h-12 items-center gap-2.5 rounded-full bg-foreground px-8 text-base font-semibold text-on-brand transition-all hover:bg-brand hover:scale-105 active:scale-95"
           >
             Découvrir GHINEL
-            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
               →
             </span>
           </Link>

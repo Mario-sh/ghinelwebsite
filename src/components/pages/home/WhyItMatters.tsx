@@ -14,22 +14,22 @@ type Benefit = {
 const benefits: Benefit[] = [
   {
     title: "IA conversationnelle",
-    desc: "KONDO permet d'interagir avec les grandes figures de l'histoire africaine — posez vos questions, découvrez leurs récits.",
+    desc: "Interrogez les grandes figures de l'histoire africaine avec KONDO.",
     icon: MessageCircle,
   },
   {
     title: "Bibliothèque numérique",
-    desc: "PAPYRUS rend les œuvres, récits et savoirs africains accessibles grâce à une expérience de lecture moderne et interactive.",
+    desc: "Accédez aux œuvres et savoirs africains via PAPYRUS.",
     icon: BookOpen,
   },
   {
     title: "Patrimoine préservé",
-    desc: "Des traditions ancestrales aux manuscrits rares — nous structurons et numérisons la mémoire africaine pour les générations futures.",
+    desc: "Numérisation et structuration de la mémoire africaine.",
     icon: History,
   },
   {
     title: "Impact mondial",
-    desc: "Des solutions conçues pour le continent africain, déployées à l'échelle internationale — pour que la mémoire africaine rayonne.",
+    desc: "Des solutions pour que la mémoire africaine rayonne.",
     icon: Globe2,
   },
 ];
@@ -86,11 +86,6 @@ export default function WhyItMatters() {
               <br />
               <span className="text-gradient">Nous changeons la manière dont vous la vivez.</span>
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Des solutions numériques innovantes pour rendre l&apos;histoire,
-              la culture et les savoirs africains accessibles aux générations
-              d&apos;aujourd&apos;hui et de demain.
-            </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">

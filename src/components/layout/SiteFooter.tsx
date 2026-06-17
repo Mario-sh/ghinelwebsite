@@ -16,9 +16,8 @@ export default function SiteFooter() {
               className="h-8 w-auto object-contain"
             />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              GHINEL crée des solutions numériques innovantes pour rendre
-              l&apos;histoire, la culture et les savoirs africains accessibles
-              aux générations d&apos;aujourd&apos;hui et de demain.
+              Sauvegarder, célébrer et transmettre le patrimoine africain via
+              la technologie.
             </p>
           </div>
 

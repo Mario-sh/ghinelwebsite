@@ -38,11 +38,6 @@ export default function HomeExperiencePreview() {
             <h2 className="heading-section mt-4 font-serif font-medium text-foreground">
               Des produits numériques au service de la mémoire africaine.
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              De l&apos;IA conversationnelle aux bibliothèques numériques —
-              KONDO et PAPYRUS rendent l&apos;histoire, la culture et les
-              savoirs africains accessibles à tous.
-            </p>
             <PremiumButton href="/solutions" variant="ghost" arrow className="mt-8">
               Découvrir nos solutions
             </PremiumButton>

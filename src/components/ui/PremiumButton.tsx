@@ -22,7 +22,7 @@ export default function PremiumButton({
   arrow,
 }: PremiumButtonProps) {
   const base = cn(
-    "group inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-7 text-sm font-semibold transition-all",
+    "group inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full px-8 text-base font-semibold transition-all",
     variant === "primary" &&
       "bg-foreground text-on-brand hover:bg-brand hover:scale-105 active:scale-95",
     variant === "brand" &&
@@ -37,7 +37,7 @@ export default function PremiumButton({
   const content = (
     <>
       {children}
-      {arrow && <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />}
+      {arrow && <ArrowRight className="size-4.5 transition-transform duration-300 group-hover:translate-x-1" />}
     </>
   );
 
